@@ -8,6 +8,7 @@ gem "mongoid_auto_increment_id", ">=0.6.0"
 gem "webrat"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-sdk", "~> 1.3.4"
+gem "devise", ">= 2.2.3"
 
 # Deploy with Capistrano
 gem "capistrano"

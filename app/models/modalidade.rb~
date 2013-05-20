@@ -1,0 +1,4 @@
+class Modalidade
+  include Mongoid::Document
+  field :descricao, type: String
+end

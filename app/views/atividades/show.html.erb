@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @atividade.nome %>
+</p>
+
+<p>
+  <b>Modalidade nome:</b>
+  <%= @atividade.modalidade_nome %>
+</p>
+
+<p>
+  <b>Inicio:</b>
+  <%= @atividade.inicio %>
+</p>
+
+<p>
+  <b>Termino:</b>
+  <%= @atividade.termino %>
+</p>
+
+<p>
+  <b>Carga horaria:</b>
+  <%= @atividade.carga_horaria %>
+</p>
+
+<p>
+  <b>Aluno:</b>
+  <%= @atividade.aluno_id %>
+</p>
+
+<p>
+  <b>Designada em:</b>
+  <%= @atividade.designada_em %>
+</p>
+
+<p>
+  <b>Avaliador:</b>
+  <%= @atividade.avaliador_id %>
+</p>
+
+<p>
+  <b>Avaliada:</b>
+  <%= @atividade.avaliada %>
+</p>
+
+<p>
+  <b>Carga horaria aceita:</b>
+  <%= @atividade.carga_horaria_aceita %>
+</p>
+
+<p>
+  <b>Justificativa:</b>
+  <%= @atividade.justificativa %>
+</p>
+
+
+<%= link_to 'Edit', edit_atividade_path(@atividade) %> |
+<%= link_to 'Back', atividades_path %>

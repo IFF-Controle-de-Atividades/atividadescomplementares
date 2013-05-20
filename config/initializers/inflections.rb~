@@ -13,9 +13,3 @@
 # ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.acronym 'RESTful'
 # end
-
- ActiveSupport::Inflector.inflections do |inflect|
-   inflect.irregular 'modalidade', 'modalidades'
-   inflect.irregular 'avaliacao', 'avaliacoes'
-   inflect.irregular 'avaliador', 'avaliadores'
- end
