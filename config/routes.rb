@@ -4,14 +4,28 @@ Atividadescomplementares::Application.routes.draw do
   resources :atividades
 
   resources :avaliacoes,
-           :only =>[
-                    :listar_atividades_complementares,
-                    :avaliar_atividade,
-                    :avaliar,
-                    :listar_avaliacoes,
-                    :exibir_avaliacoes
-                   ],
-           :collection => { :designar => :put }
+          :only =>
+          [
+            :listar_atividades_complementares,
+            :avaliar_atividade,
+            :avaliar,
+            :listar_avaliacoes,
+            :exibir_avaliacoes
+          ],:collection => { :designar => :put }
+
+  as :aluno do
+     get "/aluno/sign_in" => "devise/sessions#new", :as => :new_aluno_session
+     post "/aluno/sign_in" => "devise/sessions#create", :as => :aluno_session
+     get "/aluno/sign_out" => "devise/sessions#destroy", :as => :aluno_session_out
+     get "/aluno/home/" => "alunos#home", :as => :aluno_home
+     get "/listadeatividades" => "alunos#atividades", :as => :listadeatividades
+
+     match "/selecionar_imagem/:id/selecionar_imagem",:controller => "alunos",:action=>"selecionar_imagem", :as => :selecionar_imagem
+
+     match "/selecionar_imagem/:id/salvar_imagem",:controller => "alunos", :action=>"load_imagem",:as => :salvar_imagem
+
+     match "/selecionar_imagem/:id/remover_imagem",:controller => "alunos", :action=>"remover_imagem", :as => :remover_imagem
+  end
 
 
   # The priority is based upon order of creation:

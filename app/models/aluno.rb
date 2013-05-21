@@ -1,3 +1,4 @@
+#encoding:utf-8
 class Aluno
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes 
@@ -48,18 +49,15 @@ class Aluno
  
   has_many :atividades
   has_many :alunoimagens
- 
+  
+  validate :primeira_letra_do_nome_deve_ser_maiuscula
+  validate :primeira_letra_do_endereco_deve_ser_maiuscula
+
   validates_presence_of :nome, :message=>" - Deve ser preenchido."
   validates_presence_of :idade,:message => " - Deve ser preenchido."
   validates_presence_of :endereco, :message=> " - Deve ser preenchido."
   validates_presence_of :curso, :message=> " - Deve ser preenchido."
   validates_presence_of :matricula,:message=>" - Deve ser preenchido."
- 
-  validate :first_letter_should_be_upcase
-  def first_letter_should_be_upcase
-    errors.add("nome"     , "A 1º letra deve ser Maiuscula") unless nome=~ /[A-Z].*/
-    errors.add("endereco", "A 1º letra deve ser Maiuscula") unless endereco=~ /[A-Z].*/        
-  end
  
   validates_length_of   :nome, :maximum=> 50, :message=> " - Deve conter menos de 50 caracteres"
   validates_length_of   :endereco, :maximum=>80,:message=>" - Deve conter  menos de 80 caracteres"
@@ -68,7 +66,16 @@ class Aluno
   validates_uniqueness_of :nome,:message=>" - Já se encontra em uso. Por favor escolha outro!"
   validates_uniqueness_of :matricula, :message=>" - Já se encontra em uso."
   validates_uniqueness_of :email, :message=>" Já se encontra em uso."
- 
+
+  private
+    def primeira_letra_do_nome_deve_deve_ser_maiuscula
+      errors.add("nome"     , "A 1º letra deve ser Maiuscula") unless nome=~ /[A-Z].*/
+    end
+
+  private
+    def primeira_letra_do_endereco_deve_ser_maiuscula
+      errors.add("endereco", "A 1º letra deve ser Maiuscula") unless endereco=~ /[A-Z].*/        
+    end
  
   has_mongoid_attached_file  :photo,
   :styles =>
@@ -83,6 +90,6 @@ class Aluno
 
   validates_attachment_size :photo, :less_than => 20.megabytes
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png"]
- 
-  scope :by_name, order("nome")
+
+  scope :buscar_pelo_nome, lambda{|nome| where(:nome => nome)} 
 end
