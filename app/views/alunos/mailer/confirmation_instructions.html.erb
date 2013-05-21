@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Seja bem vindo <%= @resource.email %> às atividades complementares!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Voce pode confirmar seu cadastro através do link abaixo:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to 'Confirmar cadastro nas atividades complementares', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

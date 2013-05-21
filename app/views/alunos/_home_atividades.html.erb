@@ -1,0 +1,47 @@
+<div class="flickr_pagination pagination">
+	<div class="page_info" id="homealuno">
+		<%= will_paginate atividades, :previous_label => "&laquo; Anterior", 
+            :next_label => "Próxima &raquo;", :container => false%>
+	</div>
+</div>
+
+<div><table id="home" summary="Atividades"><caption>Atividades</caption>
+	<thead >
+            <tr>
+                <th>Nome</th>
+		<th>Carga horária</th>
+		<th>Anexar Comprovante</th>
+		<th>Ver Comprovante</th>
+		<th>Excluir</th>
+            </tr>
+	</thead>
+	<tbody id="home">
+		<% for atividade in atividades %>
+		<tr id="home">
+                    <td id="td1"><center><%= atividade.nome %></center></td>
+                    <td id="td1"><center><%= atividade.carga_horaria_aceita %></center></td>
+                    <td cellspacing=2>
+                        <center>
+                            <a href = "<%= edit_atividade_path(atividade) %>" alt="Anexar Comprovante">
+                                <%= image_tag atividade.comprovante.url(:tamanho_pequeno) %>
+                            </a>
+                        </center>
+                    </td>
+                    <% if atividade.comprovante_file_name.nil? %>
+                        <center><TD id="td1">Nao há comprovante</TD></center>
+                    <% else %>
+                        <td id="td1"><center>
+                            <a href = "<%= atividade.comprovante %>" alt="Anexar Comprovante">              
+                                <%= image_tag("samples/iconpdf.png", :width=>"60",:height=>"50", :alt=>"Ver Comprovante") %>
+                            </center></a>
+                        </td>
+                    <% end %>
+                    <td id="td1">
+			<%= link_to 'Excluir', excluir_atividade_path(atividade), 
+				:method => :delete, :confirm => 'Tem Certeza?'  %>
+                    </td>
+		</tr>
+		<%- end -%>
+	</tbody>
+    </table>
+</div>

@@ -1,0 +1,179 @@
+/* Css - Developed By
+*
+* Lais Stellet da Silva 
+*       &
+* Alexandre Sampaio 
+*  
+*/
+/* Menu com fotos em lIsta encadeada */
+
+.wrap {
+	width: 700px;
+	margin: 30px auto;
+	text-align: left;
+    margin-left: 30px;
+}
+
+.wp-caption {
+	border: 3px solid #999;
+	overflow: hidden;
+	-moz-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border: 1px outset #999;
+    border-radius: 1px;
+    width: 200px;
+    
+}
+
+.wp-caption-text {
+	padding: 5px 10px;
+	background-color: #ddd;
+	color: #EEE;
+	border-top: 1px solid #666;
+}
+
+
+#nav{display:block;  margin:10px auto; text-align:center; line-height:3em; line-height: 100%; border-radius: 2em; }
+#nav a{text-align:center; background: #3CB371; color: #FFF; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; white-space: nowrap; }
+#nav a.git             { background: #006; }
+#nav a.play            { background: #060; }
+#nav a.issue           { background: #600; }
+#nav a:hover, #nav a.current { background: #B5B5B5; }
+
+#navx{ display:block; margin:12px auto; margin-left:40px; margin-top:2px; text-align:center; }
+#navx a{text-align:center; background: #3CB371; color: #000; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; white-space: nowrap; }
+#navx a:hover, #navx a.current { background: #B5B5B5; }
+
+
+#nav li {
+    float: left;
+    width: 35%; 
+    margin:10px auto;
+    margin-top:10px;
+    list-style:none;
+}
+
+#nav a {
+    font-weight: bold;
+    color: #F0FFFF;
+    text-decoration: none;
+    display: block;
+    padding:  8px 20px;
+    margin: 0;
+    -webkit-border-radius: 1.6em;
+    -moz-border-radius: 1.6em;
+    text-shadow: 0 1px 1px rgba(0,0,0, .3);
+}
+
+/* dropdown */
+#nav li:hover > ul {
+    display: block;
+}
+
+
+/* clearfix */
+#nav:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+#nav {
+    display: inline-block;
+} 
+html[xmlns] #nav {
+    display: block;
+}
+ 
+* html #nav {
+    height: 1%;
+}
+
+
+#menu {
+	width: 200px;
+	border-style: solid solid none solid;
+	border-color: #94AA74;
+	border-size: 1px;
+	border-width: 1px;
+	margin: 10px;
+}
+
+#menu li a {
+	height: 32px;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	height: 24px;
+	text-decoration: none;
+}
+
+#menu li a:link, #menu li a:visited {
+	color: #5E7830;
+	display: block;
+	background: #F0FFFF;
+	padding: 8px 0 0 10px;
+}
+
+#menu li a:hover {
+	color: #26370A;
+	background: url(images/menu1.gif) 0 -32px;
+	padding: 8px 0 0 10px;
+}
+
+#menu li a:active {
+	color: #26370A;
+	background: url(images/menu1.gif) 0 -64px;
+	padding: 8px 0 0 10px;
+}
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.jimgMenu {
+	position:relative;
+	margin: 0px 0px 0px 50px;
+	padding: 0px;
+	width:475px;
+	height:200px;
+	overflow: hidden;
+}
+.jimgMenu ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	height: 200px;
+	position: relative;
+	}	
+.jimgMenu ul li {
+	width: 95px;
+	float: left;
+	display: block;
+	overflow: hidden;
+}
+.jimgMenu ul li a {
+	text-indent: -1000px;
+	background:#fff repeat scroll 0%;
+	border-right: 2px solid #fff;
+	cursor:pointer;
+	display:block;
+	overflow: hidden;
+	height: 200px;
+}
+.jimgMenu ul li#alunos a {
+	background: url(user-info.png) repeat scroll 0%; 
+}
+.jimgMenu ul li#professores a {
+	background: url(rails.png) repeat scroll 0%;
+}
+
+.jimgMenu ul li#atividades a {
+	background: url(avaliacao.jpg) repeat scroll 0%; 
+}
+
+

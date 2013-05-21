@@ -1,0 +1,45 @@
+<FIELDSET>
+	<LEGEND><h2 id="signin"><label>Entrar</h2></label></LEGEND>
+	<div id="sbar">
+		<div class="attention">
+			<h3>Crie uma conta</h3>
+			<p>Para continuar se ainda não tiver um Perfil, 
+			você deve antes se registrar para então poder 
+			inserir suas atividades.
+			<%= link_to "Cadastrar-se", new_aluno_registration_path, :class=>"sidebar_button" %>
+			</p>
+		</div>
+	</div>
+
+	<SECTION class="session">
+	
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			  	<div>
+					<%= f.label "E-mail: ", :class=>"small" %><br />
+					<%= f.email_field :email, :size=>"50" %>
+				</div>
+
+				<div>
+					<%= f.label "Senha: ", :class=>"small"  %><br />
+					<%= f.password_field :password, :size=>"50" %>
+				</div>
+				<br />
+				<% if devise_mapping.rememberable? -%>
+					<div>
+						<%= f.check_box :remember_me %> <%= f.label "Me Mantenha Conectado!", :class=>"small"  %>
+					</div>
+<br>				
+<%= link_to "Esqueceu sua senha?", new_password_path(resource_name), :class=>"small"  %>
+			  	<br></FIELDSET>
+    				<div class="botao_left">
+				<span class="luz">
+					<%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %>
+				</span>
+				</div>
+				<div class="botao_left">
+    					<span class="luz">
+    					<button type="button" class="botao", id='id_botao' onclick="JavaScript:index()" >Cancelar</button></span>
+   				</div>
+
+<%- end -%>
+

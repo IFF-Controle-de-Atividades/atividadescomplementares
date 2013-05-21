@@ -1,7 +1,7 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Olá Sr(a) <%= @resource.email %>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>Sua conta foi bloqueada pelo numero significante de tentativas de acesso mal sucedidas.</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>Através do link abaixo é possivel desbloquear sua conta:</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+<p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

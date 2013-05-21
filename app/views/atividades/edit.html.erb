@@ -1,6 +1,66 @@
-<h1>Editing atividade</h1>
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/aluno/home/";
+    }
+</script>
+<div id="my_id" >
+  <%= @aluno = current_aluno %>
+</div>
+<BR />
 
-<%= render 'form' %>
+<strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
 
-<%= link_to 'Show', @atividade %> |
-<%= link_to 'Back', atividades_path %>
+<FIELDSET><LEGEND><h2><label>Editando Dados</label></h2></LEGEND>
+<DIV id="localization">
+
+
+<%= form_for(@atividade , :html => { :multipart => true }) do |l| %>
+  <%= render "shared/error_messages", :target => @atividade %>
+  
+  <div class="field">
+    <b><%= l.label :nome %><br />
+    <%= l.text_field :nome ,:readonly=>:false %>
+  </div>
+  <div class="field">
+    <%= l.label "Modalidade" %><br />
+    <%= l.text_field :modalidade_nome,:readonly=>:false %>
+  </div>
+  <div class="field">
+    <%= l.label :inicio %><br />
+    <%= l.date_select :inicio, :start_year => 2012, :order => [:day, :month, :year]%>
+  </div>
+  <div class="field">
+    <%= l.label :termino %><br />
+    <%= l.date_select :termino, :start_year => 2012,:order => [:day,:month,:year] %>
+  </div>
+  <div class="field">
+    <%= l.label :carga_horaria %><br />
+    <%= l.text_field :carga_horaria %>
+  </div>
+  
+  <div class="field">
+    <%= l.hidden_field :aluno_id, :readonly => "true", :value => @aluno.id %>
+  </div>
+  
+  <div class="field">
+    <%= l.label "Anexe aqui seu comprovante: " %><br />
+  </div>
+  <div class="field">
+    <%= l.file_field :comprovante %><br >
+  </div>
+  <br /><i id="blue">Não está contente com esta atividade?</i><br />
+	<%= link_to 'Excluir', excluir_atividade_path, :method => :delete, :confirm => 'Tem
+	Certeza?'  %><br />
+  <br></FIELDSET>
+        <div class="botao_left">
+                    <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+        </div>
+        <div class="botao_left">
+            <span class="luz">
+            <p><button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+                Cancelar&nbsp<font size="30"></p>
+             </font></span>
+        </div>
+<%- end -%>
+

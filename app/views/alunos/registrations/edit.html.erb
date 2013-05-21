@@ -1,29 +1,82 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/aluno/home/";
+    }
+</script>
+<BR />
+<strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<FIELDSET><LEGEND><h2><label>Editando Dados</label></h2></LEGEND>
+<DIV id="localization">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put,:multipart => true }) do |l| %>
+    <%= render "shared/error_messages", :target => @aluno %> 
+    <div class="field">
+        <b><%= l.label "Nome:"%>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :nome %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Idade:"%>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :idade %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Sexo:"%></b>
+        <%= l.radio_button :sexo, "Masculino" %><label>Masculino</label>
+        <%= l.radio_button :sexo, "Feminino" %><label>Feminino</label>
+    </div>
+    <div class="field">
+        <b><%= l.label "Endereço:"%>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :endereco, :size=>'25'%>
+    </div>
+    <div class="field">
+        <b><%= l.label "Matricula:" %>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :matricula,:size=>"25" %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Curso:"%>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :curso,:size=>"29" %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Periodo:"%>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.text_field :periodo,:size=>"27" %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Mudar Imagem:  " %></b><br />
+        <%= l.file_field :photo %>
+    </div>
+    <div class="field">
+        <b><%= l.label "E-mail:" %>&nbsp<i id="red">*</i>&nbsp</b>
+        <%= l.email_field :email,:size=>"29" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div class="field">
+        <i id="blue" class="small">(Deixe em branco se não quiser alterar sua senha!)</i><br />
+        <b><%= l.label "Senha:" %> </b>&nbsp&nbsp
+            <%= l.password_field :password, :size=>'29' %>
+    </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div class="field">
+        <i id="blue" class="small">(Por favor confirme a sua senha.)</i><br />
+        <b><%= l.label "Repita a senha:" %>&nbsp</b>
+        <%= l.password_field :password_confirmation, :size=>"20" %>
+    </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="field">
+        <i id="red" class="small">(Informe a sua senha atual! )</i><br />
+        <b><%= l.label "Senha Atual:" %>&nbsp&nbsp<i id="red">*</i>&nbsp&nbsp</b>
+        <%= l.password_field :current_password, :size=>"21" %>
+    </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+    <br></FIELDSET>
+        <div class="botao_left">
+                    <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+        </div>
+        <div class="botao_left">
+            <span class="luz">
+            <p><button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+                Cancelar&nbsp<font size="30"></p>
+             </font></span>
+        </div>
+<%- end -%>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>

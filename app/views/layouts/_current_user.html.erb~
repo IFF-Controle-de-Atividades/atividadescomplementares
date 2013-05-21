@@ -1,0 +1,58 @@
+<% if aluno_signed_in? and current_aluno %>
+	<div id='cssmenu'>
+		<ul>
+			<li><span><%= link_to 'Pagina Inicial', aluno_home_path%></span></li>
+			<li class='has-sub '><span><a>Minhas Atividades</a></span>
+				<ul>
+         			<li class='has-sub '>
+						<li class='has-sub '>
+							<span><%= link_to 'Nova Atividade' , new_atividade_path%></span>
+						</li>						
+						<li class='has-sub '>
+							<span><%= link_to 'Atividades',listadeatividades_path%></span>
+						</li>			
+						<li class='has-sub '>
+							<span><%= link_to 'Relatorio de Atividades'  %></span>
+						</li>
+				</ul>
+			</li>
+    		<li class='has-sub '>
+				<span><%= link_to 'Editar meus Dados', edit_aluno_registration_path %></span>
+			</li>
+		</ul>
+	</div>
+<% elsif avaliador_signed_in? and current_avaliador.admin %>
+	<div id='cssmenu'>
+		<ul>
+			<li><span><%= link_to 'Pagina Inicial', avaliador_home_path %></span></li>
+			<li><span><%= link_to 'Alunos', total_alunos_path%></span></li>
+			<li><span><%= link_to 'Avaliadores', total_avaliadores_path%></span></li>
+			<li class='has-sub '><span><a>Relatorios em PDF</a></span>
+				<ul>
+         			<li class='has-sub '>
+						<span><%= link_to 'Alunos', pdf_reports_alunos_report_path(@alunos, format: "pdf")  %></span>
+					</li>
+					<li class='has-sub '>
+						<span><%= link_to 'Avaliadores', pdf_reports_avaliadores_report_path(@avaliadores, format: "pdf")  %></span>
+					</li>
+					<li class='has-sub '>
+						<span><%= link_to 'Atividades', pdf_reports_atividades_report_path(@atividades, format: "pdf")  %></span>
+					</li>
+				</ul>
+			</li>
+			<li><span><%= link_to 'Editar seus Dados', edit_avaliador_registration_path %></span></li>
+		</ul>
+	</div>
+<% elsif avaliador_signed_in? %>
+	<div id='cssmenu'>
+		<ul>
+			<li><span><%= link_to 'Pagina Inicial',avaliador_home_path%></span></li>
+			<li><span><%= link_to 'Avaliadores', total_avaliadores_path%></span></li>
+			<li><span><%= link_to 'Atividades', total_atividades_path %></span></li>
+			<li><span><%= link_to 'Editar seus Dados', edit_avaliador_registration_path%></span></li>
+		</ul>
+	</div>
+<% end %> 
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title><%= yield(:title) || "Untitled" %></title>
+		<%= stylesheet_link_tag '/stylesheets/mailer/build_mailer' %>
+	</head>
+
+	<body>
+		<!-- container -->
+		<div id="container">
+		<!-- header -->
+			<div id="header" class="clear">
+				<div id="titles"></div>
+			</div>
+			<!-- content -->
+			<div class="wrapper">
+			<!-- main -->
+			<h1>Olá avaliador <%= @atividade.avaliador.nome %></h1>
+			<p>
+			Há uma atividade de nome <%= @atividade.nome %>
+			<BR />na modalidade.: <%= @atividade.modalidade_nome %>
+			<BR />Pertencente a <%= @atividade.aluno.nome %>
+			<BR />Aguardando avaliação..
+			<BR />Por Favor Avalie com discrição!
+			<BR />Nao responda este email<br/>
+			</p>
+			<p>Para voltar a pagina, acesse este link:<br /><%= @url %>.</p>
+			<!-- end of main -->
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+			<div id="footer">
+				<div id="footer-cnt">
+					<ul id="ftr-links">
+						<li id="entp">
+							<p>Copyright &copy; 2012 .</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- /footer -->
+		</div>
+	</body>
+</html>
+
+,

@@ -1,0 +1,10 @@
+Olá <%= @atividade.avaliador.nome %>
+===============================================
+Há uma atividade de nome <%= @atividade.nome %>
+na modalidade.: <%= @atividade.modalidade_nome %>
+Para ser avaliada..
+-- Por Favor Avalie com discrição!
+-- Não responda este email --
+==========================================
+Para voltar a pagina, acesse este link: <%= @url %>.
+==========================================

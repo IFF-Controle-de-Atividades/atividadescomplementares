@@ -1,18 +1,86 @@
-<h2>Sign up</h2>
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/aluno/sign_in";
+    }
+</script>
+<BR />
+<strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
+<FIELDSET><LEGEND><h2><label>Cadastrar-se</label></h2></LEGEND>
+<DIV id="localization">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |l| %>
+    <%= render "shared/error_messages", :target => @aluno %>
+    <div class="field">
+      <%= l.label "Nome: ", :class=>"small" %><i id="red">*</i>
+      <%= l.text_field :nome, :size=>"51"%>
+    </div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="field">
+       <%= l.label "Idade: ", :class=>"small" %>
+       <%= l.select :idade,
+            options_for_select(%w{ 17 18 19 20 21 22 23 24 25
+               26 27 28 29 30 31 32 33 34 35 36 37 
+               38 39 40 41 42 43 44 45 46 47 48 49 50 })
+        %> 
+    </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <div class="field">
+        <FIELDSET ID="sex_registration">
+            <LEGEND><%= l.label "Sexo", :class=>"small" %></LEGEND>
+                <%= l.radio_button :sexo, "Masculino" %>
+                <%= l.label "Masculino", :class=>"small" %>
+                <%= l.radio_button :sexo, "Feminino" %>
+                <%= l.label "Feminino", :class=>"small" %>
+        </FIELDSET>
+    </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <div class="field">
+        <%= l.label "Endereço: ", :class=>"small" %><i id="red">*</i>
+        <%= l.text_field :endereco, :size=>"48" %>
+    </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="field">
+          <%= l.label "Nº Matricula: ", :class=>"small" %><i id="red">*</i>
+          <%= l.text_field :matricula, :size=>"45.5" %>
+    </div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+    <div class="field">
+       <%= l.label "Curso: ", :class=>"small" %>
+       <%= l.select :curso, options_for_select(%w{ Sistemas-de-Informação }) %>
+    </div>
 
-<%= render "alunos/shared/links" %>
+    <div class="field">
+       <%= l.label "Periodo: ", :id=>"aperiodo", :class=>"small" %>
+            <%= l.select :periodo,
+                options_for_select(%w{ 1ºperiodo 2ºperiodo 3ºperiodo 4ºperiodo 
+                5ºperiodo 6ºperiodo 7ºperiodo 8ºperiodo}) %> 
+    </div>
+
+    <div class="field">
+        <%= l.label "E-mail: ", :class=>"small" %><i id="red">*</i>
+        <%= l.email_field :email, :size=>"51" %>
+    </div>
+
+    <div class="field">
+        <%= l.label "Senha: ", :class=>"small" %><i id="red">*</i>
+        <%= l.password_field :password, :size=>"51" %>
+    </div>
+
+    <div class="field">
+        <LABEL class="small">Confirme sua senha: </LABEL><i id="red">*</i>
+        <%= l.password_field :password_confirmation, :size=>"37" %>
+    </div>
+    <br>
+    <br></FIELDSET>
+
+    <div class="botao_left">
+        <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+    </div>
+
+    <div class="botao_left">
+        <p>
+        <button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+            Cancelar&nbsp<font size="30"></p></font>
+        </button>
+    </div>
+<%- end -%>

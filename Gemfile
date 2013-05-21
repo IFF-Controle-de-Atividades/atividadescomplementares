@@ -9,9 +9,11 @@ gem "webrat"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-sdk", "~> 1.3.4"
 gem "devise", ">= 2.2.3"
-
+gem 'will_paginate_mongoid'
+gem 'actionmailer_inline_css'
 # Deploy with Capistrano
 gem "capistrano"
+
 
 
 group :assets do
@@ -27,6 +29,9 @@ group :development, :test do
   gem "rb-fsevent"
   gem "autotest-standalone"
   gem "test_notifier"
+  gem 'tlsmail'
+  gem 'prawn'
+  gem 'bcrypt-ruby', '~> 3.0.0'
 
 end
 

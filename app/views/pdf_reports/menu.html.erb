@@ -1,0 +1,18 @@
+<div >
+	<ul>
+		<li>
+			<%= link_to "Download Alunos",
+			pdf_reports_alunos_report_path(@alunos, format: "pdf") %>
+		</li>
+		<li>
+			<%= link_to "Download Avaliadores",
+			pdf_reports_avaliadores_report_path(@avaliadores, format: "pdf")
+			%>
+		</li>
+		<li>
+		<%= link_to "Download Atividades",
+			pdf_reports_atividades_report_path(@atividades, format: "pdf")
+		%>
+		</li>
+	</ul>
+</div> 

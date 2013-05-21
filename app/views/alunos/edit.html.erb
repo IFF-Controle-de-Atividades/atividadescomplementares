@@ -1,0 +1,77 @@
+<table>
+	<TR>
+		<TD>
+			<%= image_tag current_aluno.photo.url(:tamanho_medio) %>
+		</TD>
+		<TD>
+			<h1>
+				<CENTER>Editando dados Pessoais<br/>
+				de <%= current_aluno.nome %></CENTER>
+			</h1>
+		</TD>
+	</TD>
+</table>
+<%= form_for(@aluno, :html => { :multipart => true },:url=>{:action=>'update'}) do |l| %>
+     <%= render "shared/error_messages", :target => @aluno %> 
+    <p>
+       <b>Nome</b><br>
+	   <%= l.text_field :nome %>
+	</p>
+	<p>
+	   <b>Curso</b><br>
+	    <%= l.text_field :curso %>
+	</p>
+	<p>
+	  <b>Periodo</b><br/>
+	    <%= l.text_field :periodo %> 
+    </p>
+	<p>
+	  <b>Matricula.:</b><br>
+	    <%= l.text_field :matricula %>
+	</p>
+    <p>
+	   <b>Idade.:</b><br/>
+	    <%= l.text_field :idade	%> 
+    </p>
+	<p>
+	    <b>Sexo.:</b>
+	    <%= l.radio_button :sexo, "Masculino" %>Masculino
+	    <%= l.radio_button :sexo, "Feminino" %>Feminino
+    </p>
+	<p>
+	   <b>E-mail.:</b><br>
+	    <%= l.text_field :email %>
+    </p>
+	
+<p>
+	   <b>Senha.:</b><br>
+        <%= l.password_field :password %>
+    </p>
+	<p>
+	  <b>Confirme sua senha.:</b><br>
+	    <%= l.password_field :password_confirmation %>
+    </p>
+	<div class="field">
+    	<%= l.label "Mudar Imagem:  " %><br />
+  	</div>
+  	<div>
+  		<%= l.file_field :photo %>
+  	</div>
+	  <br>
+	  <div class="actions">
+	    <%= l.submit "Atualizar dados"%>
+	  	<form>
+            <input type="button" value="voltar" onClick="javascript:index()" >
+        </form>
+	</div>
+	  
+<% end %>
+
+
+<script type="text/javascript">
+<!--
+  function index(){
+    window.location.href = " ";
+  }
+//-->
+</script>

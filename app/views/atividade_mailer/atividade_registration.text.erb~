@@ -1,0 +1,9 @@
+Olá <%= @aluno.nome %>
+=========================================    
+Sua Atividade de nome <%= @atividade.nome %>
+Foi inserida..
+Aguarde a Avaliação!
+-- Não responda este email --
+==========================================
+Para voltar a pagina, acesse este link: <%= @url %>.
+==========================================

@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title><%= yield(:title) || "Atividades - Complementares" %></title>
+		<%= render 'shared/stylesheets' %>
+		<%= javascript_include_tag :application %>
+        <%= javascript_include_tag :all %>
+		<%= javascript_include_tag "jquery-1.4.4.min.js" %>
+		<%= javascript_include_tag "jquery.maskedinput.js" %>
+		<%= javascript_include_tag "jquery.js" %>
+		<%= javascript_include_tag "jquery-easing-1.3.pack.js" %>
+		<%= javascript_include_tag "jquery-easing-compatibility.1.2.pack.js" %>
+		<%= javascript_include_tag "jquery.kwicks-1.5.1.pack.js" %>
+		
+		<%= csrf_meta_tag %>
+		<%= yield(:head) %>
+	</head>
+		
+	<body>
+		<!-- container -->
+		<div class="container">    
+			<!-- header -->
+      
+			<div class="header">
+                <div id="imagelogo"><%= image_tag("IFFLOGO3.png",:width=>'450') %></div>
+                
+				<div>
+                    <h1><font face="NewStencil"><div class="headername"></div></font></h1>
+                        <span class="signin">
+                            <%= render 'layouts/header' %>
+                        </span>
+                </div>
+            </div>
+            <div id="info">INFORMATICA</div>
+            <!-- content -->
+            <div class="conteudo">
+                <!-- main -->
+                <%= render 'shared/flash_messages' %>
+	<div><%= render 'layouts/current_user' %></div>
+					
+					<div>
+						<%= yield %>
+					</div>
+				<!-- end of main -->
+				
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+			<div class="footer">
+				<div class="footer-cnt">
+					<ul class="ftr-links">
+					<li class="entp"></li>
+					</ul>
+					
+				</div>
+			</div>
+			<!-- /footer -->
+		</div>
+	</body>
+</html>

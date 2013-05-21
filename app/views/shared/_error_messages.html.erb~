@@ -1,0 +1,12 @@
+<% if target.errors.any? %>  
+<div id ='error_explanation'>  
+  <h2><%= pluralize(target.errors.count, "erro") %> 
+  Encontrado(s) ao tentar salvar:</h2>  
+  <ul>  
+  <% target.errors.full_messages.each do |msg| %>  
+  <h3><li><%= msg %></li></h3>
+  <% end %></br>  
+  </h2>Verifique-os.:</h2>  
+  </ul>  
+</div>  
+<% end %>

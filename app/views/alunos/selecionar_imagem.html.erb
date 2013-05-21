@@ -1,0 +1,31 @@
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/aluno/home/";
+    }
+</script>
+
+<FIELDSET><LEGEND><H1><label> Editar Imagem do Perfil </label></H1></LEGEND>
+<DIV id="localization">
+
+<%= form_for(@aluno, :url=>{:action=>'load_imagem'}, :html => { :multipart => true }) do |l| %>
+     <%= render "shared/object_error_messages", :object => @aluno %> 
+    <div class="field">
+       <b><%= l.label "Imagem:" %></b>
+       <i id="blue" class="small">(Deixe em branco se não quiser alterar a sua imagem!)</i>
+       <br>
+       <%= l.file_field :photo %><BR /></b>
+    </div>
+  
+    <br>
+    <br></FIELDSET>
+    <div class="botao_left">
+                <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+    </div>
+    <div class="botao_left">
+        <p>
+        <button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+            Cancelar&nbsp<font size="30"></p></font>
+        </button>
+    </div>
+<%- end -%>

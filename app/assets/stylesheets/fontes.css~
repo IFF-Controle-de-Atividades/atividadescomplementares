@@ -1,0 +1,22 @@
+/*Destinado a carregar fontes externas*/
+
+@font-face { 
+    font-family: 'LibelSuitRegular';
+    src: url('WebKit/libelsuit-webfont.eot');
+    src: url('WebKit/libelsuit-webfont.eot?#iefix') format('embedded-opentype'),
+         url('WebKit/libelsuit-webfont.woff') format('woff'),
+         url('WebKit/libelsuit-webfont.ttf') format('truetype'),
+         url('WebKit/libelsuit-webfont.svg#LibelSuitRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face 
+{
+    font-family: NewStencil;
+    font-style: normal;
+    font-weight: normal;
+    src: url(ERKNfont.otf);
+}
+

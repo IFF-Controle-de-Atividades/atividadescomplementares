@@ -1,12 +1,32 @@
-<h2>Forgot your password?</h2>
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/aluno/sign_in";
+    }
+</script>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<FIELDSET><LEGEND><h2 id="signin"><label>Esqueceu sua senha</h2></label></LEGEND>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+    <%= devise_error_messages! %>
+    <div>
+       <label class='small'>Digite abaixo o seu endereço de e-mail para que possamos enviar as informações de redefinição de senha.</label>
+       <br>
+       <%= f.label "E-mail: ", :class=>"small" %><br />
+       <%= f.email_field :email, :size=>"50" %>
+    </div>
+    <br /></FIELDSET>
+    <div class="botao_left">
+        <span class="luz">
+            <%= f.submit "Enviar", :class=>"botao", :id=>'id_botao' %>
+        </span>
+    </div>
+    <div class="botao_left">
+        <p>
+        <button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+            Cancelar&nbsp<font size="30"></p></font>
+        </button>
+    </div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+<%- end -%>
 
-<%= render "alunos/shared/links" %>

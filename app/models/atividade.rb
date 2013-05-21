@@ -4,6 +4,12 @@ class Atividade
   include Mongoid::MultiParameterAttributes 
   include Mongoid::Timestamps
   include Mongoid::Paperclip
+  
+  belongs_to :aluno
+  has_many :modalidades
+  belongs_to :modalidade
+  belongs_to :avaliador
+
   field :nome, type: String
   field :modalidade_nome, type: String
   field :inicio, type: Date

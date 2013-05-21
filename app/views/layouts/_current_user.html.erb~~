@@ -1,0 +1,28 @@
+<% if current_aluno %>
+	<!-- menus quando aluno logado -->
+	<div id="project-nav">
+		<ul>
+			<li><%= link_to 'Pagina Inicial'%></li>
+			<li><%= link_to 'Nova Atividade' , new_aluno_atividade_path%></li>
+			<li><a href= "/alunos/<%= current_aluno.id %>/edit">Editar</a></li>
+		</ul>
+	</div>
+<% elsif avaliador_signed_in? and current_avaliador.admin %>
+	<!-- menus quando avaliador|admin| logado -->
+	<div id="project-nav">
+		<ul>
+			<li><%= link_to 'Pagina Inicial'%></li>
+			<li><%= link_to 'Alunos'%></li>
+			<li><%= link_to 'Avaliadores'%></li>
+			<li><%= link_to 'Editar Dados' %></li>
+		</ul>
+	</div>
+<% elsif avaliador_signed_in? and current_avalidor %>
+	<!-- menus quando avaliador logado -->
+	<div id="project-nav">
+		<ul>
+			<li><%= link_to 'Pagina Inicial'%></li>
+			<li><%= link_to 'Editar Dados'%></li>
+		</ul>
+	</div>
+<% end %> 

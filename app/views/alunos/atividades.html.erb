@@ -1,0 +1,11 @@
+<br />
+<div class= 'MyActivities' height='150px'>
+    <% if current_aluno.atividades.empty? %>
+        <div class="infobar">
+            <div>Você não possui atividades.</div>
+        </div>
+    <% else %>
+        <%= render :partial=>'listar_atividades', :locals=>{:atividades=>current_aluno.atividades.paginate(:page => params[:page], :per_page=>20)}  %>
+    <% end %>
+</div>
+

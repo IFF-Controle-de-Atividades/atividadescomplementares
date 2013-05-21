@@ -1,0 +1,15 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(object.errors.count, "error") %> 
+        Encontrados em <%= object.class.to_s.underscore.humanize.downcase %> 
+        Impossivel Salvar:</h2>
+    <p><strong>Verifique os campos abaixo:</strong></p>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+

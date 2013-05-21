@@ -1,0 +1,24 @@
+<script type="text/javascript">
+	$().ready(function() {
+		$('.jimgMenu ul').kwicks({max: 410, duration: 300, easing: 'easeOutQuad', complete: 'callback'});
+	});
+</script>
+
+<div class="jimgMenu">
+  <ul>
+		<li id="alunos">
+			<%= link_to "Download Alunos",
+			pdf_reports_alunos_report_path(@alunos, format: "pdf") %>
+		</li>
+		<li id="professores">
+			<%= link_to "Download Avaliadores",
+			pdf_reports_avaliadores_report_path(@avaliadores, format: "pdf")
+			%>
+		</li>
+		<li id="atividades">
+		<%= link_to "Download Atividades",
+			pdf_reports_atividades_report_path(@atividades, format: "pdf")
+		%>
+		</li>
+	</ul>
+</div>

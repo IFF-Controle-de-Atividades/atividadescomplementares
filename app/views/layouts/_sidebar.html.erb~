@@ -1,0 +1,39 @@
+<% if aluno_signed_in? %>
+	<div class="attention">
+		<fieldset>
+			<legend >Logado</legend>
+				<div class="retrato">
+					<a href= "#">
+						<center><%= image_tag current_aluno.photo.url(:tamanho_medio) %></center>
+					</a>
+				</div>
+				<p id="loged_in">
+					<%= current_aluno.nome %><br />
+					<%= current_aluno.curso %><br />
+					<%= current_aluno.matricula %>
+				</p>
+				<%= link_to "Sair", aluno_session_out_path, :method => :delete, :class =>"button" %>
+		</fieldset>
+	</div>
+<% elsif avaliador_signed_in? %>
+	<div class="attention">
+		<fieldset>
+			<legend >Logado</legend>
+			<p id="loged_in">
+				<a href= "#">
+					<center><%= image_tag current_avaliador.photo.url(:tamanho_medio) %></center>
+				</a>
+				<%= current_avaliador.nome %>.<br />
+				<%= current_avaliador.email %></p>
+				<%= link_to "Sair", avaliador_session_out_path, :method => :delete, :class =>"button" %>
+		</fieldset>
+	</div>
+<% else %>
+	<div class="attention">
+		<h3>Crie uma conta</h3>
+		<p>Para continuar se ainda não tiver um Perfil, você deve antes se registrar para então poder inserir suas atividades.
+		<%= link_to "Sign up", new_aluno_registration_path, :class=>"
+		sidebar_button" %>
+		</p>
+	</div>
+<%- end -%> 

@@ -1,0 +1,52 @@
+
+<div id='cssHeadermenu' class="headerMenu">
+	<% if aluno_signed_in? %>
+      <ul> 
+        <li class='header-sub '><span>
+            <center>
+              <%= image_tag(current_aluno.photo.url(:tamanho_pequeno),
+                size:'90x90') %>
+            </center></span>
+          
+            <ul>
+              <li class='header-sub '>
+                <span>
+                  <%= link_to "Atualizar Imagem", "/selecionar_imagem/#{current_aluno.id}/selecionar_imagem" %></span>
+              </li>
+              <li class='header-sub '>
+                <span>
+                  <%= link_to "Ajuda?" %></span>
+              </li>
+
+              <li class='header-sub '>
+                <span><%= link_to "Sair", aluno_session_out_path, :method => :delete,:class=>"button1 fright p6" %>
+                </span>
+              </li>
+            </ul>
+        </li>
+        </ul>
+    <% elsif avaliador_signed_in? %>
+    	<ul> 
+        <li>
+          <div class="retrato">
+            <center>
+              <%= image_tag(current_avaliador.photo.url(:tamanho_pequeno)) %>
+            </center>
+          </div>
+          <ul> 
+            <li>
+              <%= link_to "Atualizar Imagem" %>
+            </li>
+            <li class='header-sub '>
+                <span>
+                  <%= link_to "Ajuda?" %></span>
+            </li> 
+            <li>
+              <%= link_to "Sair", avaliador_session_out_path, :method => :delete, :class=>"button1 fright p6" %>
+            </li> 
+          </ul> 
+        </li>
+        </ul>
+    <% else %><% end %>
+</div>
+

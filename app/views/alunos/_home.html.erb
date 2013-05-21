@@ -1,0 +1,29 @@
+<div id="aluno_logado" class="button">
+<fieldset>
+   <legend >Logado</legend>
+     <div id="facemenu"><ul> 
+       <li>
+        <div class="retrato">
+          <center>
+            <%= image_tag(current_aluno.photo.url(:tamanho_pequeno)) %>
+            <!---->
+          </center>
+        </div>
+      <ul> 
+        <li><%= link_to "Atualizar Imagem", "/selecionar_imagem/#{current_aluno.id}/selecionar_imagem" %></li> 
+        <li><%= link_to 'Remover Imagem',  "/selecionar_imagem/#{current_aluno.id}/remover_imagem" %></li> 
+      </ul> 
+    </ul></div>
+    <p id="loged_in">
+        <%= label_tag :nome%> <%= current_aluno.nome %><br />
+        <%= label_tag :curso%> <%= current_aluno.curso %><br />
+        <%= label_tag :matricula%> <%= current_aluno.matricula %>
+    </p>
+    <%= link_to "Sair", aluno_session_out_path, :method => :delete, :class =>"button" %>
+</fieldset>
+</div>
+
+
+
+
+

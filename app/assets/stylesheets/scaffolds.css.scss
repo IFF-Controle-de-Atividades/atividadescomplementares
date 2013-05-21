@@ -1,49 +1,43 @@
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
 div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+    &.field, &.actions {
+        margin-bottom: 10px; 
+    } 
 }
 
-#notice {
-  color: green;
+.flash_notice, .flash_alert, .flash_warning {
+  font-weight: bold;
+  /*padding: 5px 8px;*/
+  padding: 15px 10px 10px 27px;
+  margin: 10px 0;
+  text-align: center;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+  background: #9c9 url(../images/tick.png) no-repeat 5px center;
 }
+
+.flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+  background: #fcc url(../images/error.png) no-repeat 5px center;
+}
+
+.flash_warning {
+ border: 3px solid #dd0;
+ background: #EEEE00 url(../images/Warning.png) no-repeat 5px center;
+ color: #8B4513;
+}
+
+.info
+{
+  background:#CAE1FF url(../images/Warning.png) no-repeat 5px center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.field_with_errors { padding: 2px; background-color: red; display: table; }
 
 #error_explanation {
   width: 450px;
@@ -60,10 +54,62 @@ div {
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+    color: #fff; 
+    }
+    ul li {font-size: 12px; list-style: square; display:block;}
+}
+
+div.erro_image
+{
+	
+	background-repeat: no-repeat;
+	background-position: 370px 58px;
+	width:10%;
+}
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+.field_with_errors {
+  margin-top: 10px;
+  padding: 2px;
+  border: 2px solid red;
+  background-color: red;
+  display: table;
+}
+
+.field_with_errors label {
+  color: #fff;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 14px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 14px;
+  list-style: square;
+}
+
+.error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
 }

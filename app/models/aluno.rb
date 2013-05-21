@@ -8,6 +8,14 @@ class Aluno
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  field :nome, :type => String
+  field :idade, :type => Integer
+  field :sexo, :type => String
+  field :endereco , :type => String
+  field :matricula, :type => String
+  field :curso, :type => String
+  field :periodo, :type => String
+
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -48,9 +56,9 @@ class Aluno
  
  
   has_many :atividades
-  has_many :alunoimagens
+  #has_many :alunoimagens
   
-  validate :primeira_letra_do_nome_deve_ser_maiuscula
+ # validate :primeira_letra_do_nome_deve_ser_maiuscula
   validate :primeira_letra_do_endereco_deve_ser_maiuscula
 
   validates_presence_of :nome, :message=>" - Deve ser preenchido."

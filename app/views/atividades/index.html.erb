@@ -3,16 +3,11 @@
 <table>
   <tr>
     <th>Nome</th>
-    <th>Modalidade nome</th>
+    <th>Descricao</th>
     <th>Inicio</th>
     <th>Termino</th>
     <th>Carga horaria</th>
     <th>Aluno</th>
-    <th>Designada em</th>
-    <th>Avaliador</th>
-    <th>Avaliada</th>
-    <th>Carga horaria aceita</th>
-    <th>Justificativa</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,19 +16,14 @@
 <% @atividades.each do |atividade| %>
   <tr>
     <td><%= atividade.nome %></td>
-    <td><%= atividade.modalidade_nome %></td>
+    <td><%= atividade.descricao %></td>
     <td><%= atividade.inicio %></td>
     <td><%= atividade.termino %></td>
     <td><%= atividade.carga_horaria %></td>
-    <td><%= atividade.aluno_id %></td>
-    <td><%= atividade.designada_em %></td>
-    <td><%= atividade.avaliador_id %></td>
-    <td><%= atividade.avaliada %></td>
-    <td><%= atividade.carga_horaria_aceita %></td>
-    <td><%= atividade.justificativa %></td>
+    <td><%= atividade.aluno %></td>
     <td><%= link_to 'Show', atividade %></td>
     <td><%= link_to 'Edit', edit_atividade_path(atividade) %></td>
-    <td><%= link_to 'Destroy', atividade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', atividade, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
