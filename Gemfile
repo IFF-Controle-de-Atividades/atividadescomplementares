@@ -22,7 +22,12 @@ group :assets do
 end
 
 group :development, :test do
+  gem "rspec"
   gem "rspec-rails", ">= 2.12.2"
+  gem "rb-fsevent"
+  gem "autotest-standalone"
+  gem "test_notifier"
+
 end
 
 group :test do
