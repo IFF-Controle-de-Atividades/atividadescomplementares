@@ -1,0 +1,51 @@
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/adim/TOTAL_AVALIADORES";
+    }
+</script>
+
+
+<FIELDSET>
+<LEGEND><h1><label>Editando Status de <%= @avaliador.nome %></label></h1></LEGEND>
+
+<%= form_for(@avaliador, :url=>{:action=>'atualizar_status'}) do |l| %>
+     <%= render "shared/error_messages", :target => @avaliador %> 
+    <div class="field">
+       <%= l.label "Nome:" %><br>
+       <%= l.text_field :nome,:readonly=>:false %>
+    </div>
+
+    <div class="field">
+       <%= l.label "Titulação:" %><br>
+       <%= l.text_field :titulacao,:readonly=>:false %>
+    </div>
+
+    <div class="field">
+        <%= l.label :email %><br />
+        <%= l.email_field :email,:readonly=>:false %>
+    </div>
+
+    <div class="field">
+        <%= l.label "Administrador:" %>
+        <%= l.radio_button :admin, 1 %><label>Sim</label>
+        <%= l.radio_button :admin, 0 %><label>Não</label>
+    </div>
+
+    <div class="field">
+        <%= l.label "Status: " %>
+        <%= l.radio_button :ativo, 1 %><label>Ativo</label>
+        <%= l.radio_button :ativo, 0 %><label>Não Ativo</label>
+    </div>
+
+    <br></FIELDSET>
+    <div class="botao_left">
+        <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+    </div>
+    <div class="botao_left">
+        <span class="luz">
+        <button type="button" class="botao", id='id_botao' onclick="JavaScript:index()" >Cancelar</button></span>
+    </div>
+<% end %>
+
+

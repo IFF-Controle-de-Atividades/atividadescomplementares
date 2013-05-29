@@ -1,0 +1,156 @@
+<div class="atividades_table" ><br />
+	<font face="Impact, fantasy" size="5em" color= "#067120" >
+	Lista de atividades de <%= @x.nome %></font><br /><br />
+
+<table>
+  <tr>
+    <th>Avaliar</th>
+    <th>Nome</th>
+    <th>Descricao</th>
+    <th>Inicio</th>
+    <th>Termino</th>
+    <th>CH - Enviada</th>
+    <th>CH - Aceita</th>
+    <th>Comprovante</th>
+    <th>Avaliada</th>
+	<th>Avaliada por</th>
+	<% if avaliador_signed_in? and current_avaliador.admin%>
+		<th>Designar avaliador</th>
+	<%- end -%>
+   </tr>
+   <% for atividade in atividades %>
+		<% if avaliador_signed_in? and current_avaliador.admin%>
+			<tr>
+				<th><center>
+					<a href = "<%= avaliar_atividade_path(atividade) %>" alt="Avaliar">
+						<%= image_tag atividade.comprovante.url(:tamanho_pequeno) %>
+					</a></center>
+				</th>
+
+				<td>
+					<center><%= atividade.nome %></center>
+				</td>
+				<td>
+					<center><%= atividade.modalidade_nome %></center>
+				</td>
+				<td>
+					<center><%= atividade.inicio %></center>
+				</td>
+				<td>
+					<center><%= atividade.termino %></center>
+				</td>
+				<td>
+					<center><%= atividade.carga_horaria %></center>
+				</td>
+				<td>
+					<center><%= atividade.carga_horaria_aceita %></center>
+				</td>
+				<% if atividade.comprovante_file_name.nil? %>
+					<center><TD>Nao há comprovante</TD></center>
+				<% else %>
+					<td><center>
+						<a href = "<%= atividade.comprovante %>" >
+						<%= image_tag("samples/pdf-icon.png",
+							:width=>"60",:height=>"50",
+							:alt=>"Ver Comprovante") %>
+						</center></a>
+					</td>
+				<%-end-%>
+				<td><center><%= yes_or_no?(atividade.avaliada) %></center></td>
+				<td>
+					<center>
+						<% if atividade.avaliador.nil? %>
+							<div>Sem avaliador</div>
+						<% else %>
+							<%= atividade.avaliador.nome %>
+						<%-end-%>
+					</center>
+				</td>
+
+				<% if avaliador_signed_in? and current_avaliador.admin %>
+					<TD>
+					<%= form_for(atividade, :url => designar_atividade_path(atividade) )  do |l|%>
+						<div class="field">
+							&nbsp<BR /><center>
+							<%=
+l.collection_select(:avaliador_id,Avaliador.where(:admin=>0),:id, :nome,{:prompt =>"Selecione"})
+%>
+							<%= l.submit "Enviar"%>
+						</div>
+					<% end %>
+				</TD>
+			<% end %>
+		<% elsif atividade.avaliador.id == current_avaliador.id %>
+			<tr>
+				<th><center>
+					<a href = "<%= avaliar_atividade_path(atividade) %>" alt="Avaliar">
+						<%= image_tag atividade.comprovante.url(:tamanho_pequeno) %>
+					</a></center>
+				</th>
+
+				<td>
+					<center><%= atividade.nome %></center>
+				</td>
+				<td>
+					<center><%= atividade.modalidade_nome %></center>
+				</td>
+				<td>
+					<center><%= atividade.inicio %></center>
+				</td>
+				<td>
+					<center><%= atividade.termino %></center>
+				</td>
+				<td>
+					<center><%= atividade.carga_horaria %></center>
+				</td>
+				<td>
+					<center><%= atividade.carga_horaria_aceita %></center>
+				</td>
+				<% if atividade.comprovante_file_name.nil? %>
+					<center><TD>Nao há comprovante</TD></center>
+				<% else %>
+					<td><center>
+						<a href = "<%= atividade.comprovante %>" >
+						<%= image_tag("samples/pdf-icon.png",
+							:width=>"60",:height=>"50",
+							:alt=>"Ver Comprovante") %>
+						</center></a>
+					</td>
+				<%-end-%>
+				<td><center><%= yes_or_no?(atividade.avaliada) %></center></td>
+				<td>
+					<center>
+						<% if atividade.avaliador.nil? %>
+							<div>Sem avaliador</div>
+						<% else %>
+							<%= atividade.avaliador.nome %>
+						<%-end-%>
+					</center>
+				</td>
+
+				<% if avaliador_signed_in? and current_avaliador.admin %>
+					<TD>
+					<%= form_for(atividade, :url => designar_atividade_path(atividade) )  do |l|%>
+						<div class="field">
+							&nbsp<BR /><center>
+							<%=
+l.collection_select(:avaliador_id,Avaliador.where(:admin=>0),:id, :nome,{:prompt =>"Selecione"})
+%>
+							<%= l.submit "Enviar"%>
+						</div>
+					<% end %>
+				</TD>
+			<% end %>
+		<%- end -%>
+	</tr>
+	<%- end -%>
+</table>
+<br /> 
+</div>
+
+<div class="apple_pagination pagination">
+	<div class="page_info">
+		<%= will_paginate @atividade_aluno, :previous_label => "&laquo; Anterior", :next_label => "Próxima &raquo;", :container => false%>
+	</div><br />
+	<%= link_to "Voltar", total_alunos_path%>
+</div>

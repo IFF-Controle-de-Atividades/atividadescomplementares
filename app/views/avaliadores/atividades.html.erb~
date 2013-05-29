@@ -1,0 +1,8 @@
+<%if @x.atividades.empty? %>
+        <div class="infobar" >
+                <center id="navx"><%= @x.nome %> não possui atividades.     <%= link_to "Voltar", total_alunos_path%></center>
+        </div>
+<% else %>
+	<%= render :partial=>"atividades_aluno", :locals=>{:atividades=>@atividade_aluno}%>
+<%- end -%>
+

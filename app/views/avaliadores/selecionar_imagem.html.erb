@@ -1,0 +1,22 @@
+<H1><BR /><BR />
+    Editar Imagem do Perfil
+</H1><BR /><BR />
+
+<%= form_for(@avaliador, :url=>{:action=>'load_imagem'}, :html => { :multipart => true }) do |l| %>
+     <%= render "shared/object_error_messages", :object => @avaliador %>
+    <div class="field">
+       <b><%= l.label "Imagem" %>.:</b><br>
+       <%= l.file_field :photo %><BR /><i id="blue">(Deixe em branco se não quiser alterar a sua imagem!)</i><br /></b><br />
+    </div>
+  
+    <br>
+    <br>
+    <div class="field">
+        <%= l.submit "Enviar", :id=>"simply_button" %>
+        <%= link_to 'Remover Imagem',  "/avaliador/#{current_avaliador.id}/remover_imagem",
+:id=>"simply_button"%>
+    
+    </div>
+<%- end -%>
+
+

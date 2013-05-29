@@ -6,7 +6,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-print "Enviando Modalidade... Dados\n\n"
+print "<< Inserindo Modalidades Padronizadas... Dados >>\n\n"
 
 Modalidade.create(descricao: "Participação em Curso")
 Modalidade.create(descricao: "Ministrante de Curso de Extensão")
@@ -24,5 +24,8 @@ Modalidade.create(descricao: "Exercício de Cargo Eletivo na Diretoria do DCE")
 Modalidade.create(descricao: "Exercício de Cargo Eletivo na Diretoria do CA do Curso")
 Modalidade.create(descricao: "Participação em Equipe Esportiva do IFF")
 Modalidade.create(descricao: "Certificação Profissional na Área do Curso")
+
+print "<< Inserindo Administrador no Sistema >>"
+Avaliador.create(nome: 'Administrador', sexo: 'Masculino', matricula: 'Altere sua matricula', titulacao: 'Alterar sua titulação', email: 'admin@admin.com', password: 'admin', admin: 1)
 
 print "Dados Inseridos\n\n"

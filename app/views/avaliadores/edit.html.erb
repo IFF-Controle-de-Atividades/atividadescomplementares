@@ -1,0 +1,57 @@
+<h1>Dados Pessoais</h1>
+
+
+<%= form_for(@avaliador, :url=>{:action=>'update'}) do |l| %>
+     <%= render "shared/error_messages", :target => @avaliador %> 
+    <div class="field">
+       <b>Nome.:</b><br>
+	   <%= l.text_field :nome %>
+	</div>
+	<div class="field">
+	   <b>Titulação.:</b><br>
+	    <%= l.text_field :titulacao %>
+	</div>
+	<div class="field">
+	    <b>Sexo.:</b>
+	    <%= l.radio_button :sexo, "Masculino" %>Masculino
+	    <%= l.radio_button :sexo, "Feminino" %>Feminino
+    </div>
+	<div class="field">
+	  <b>Matricula.:</b><br>
+	    <%= l.text_field :matricula %>
+	</div>
+    <div class="field">
+		<%= l.label :email %><br />
+		<%= l.email_field :email %>
+	</div>
+
+	<div class="field">
+		<%= l.label :password %><br />
+		<%= l.password_field :password %>
+	</div>
+
+	<div class="field">
+		<%= l.label :password_confirmation %><br />
+		<%= l.password_field :password_confirmation %>
+	</div>
+	<div class="field">
+		<%= l.label :admin %><br />
+		<%= l.password_field :admin %>
+	</div>
+    <br>
+    <br>
+    <div class="field">
+		<%= l.submit "Sign up" %>
+        <form>
+            <input type="button" value="Cancelar" onClick="javascript:index()" >
+        </form>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+<!--
+  function index(){
+    window.location.href = "/sessions/new";
+  }
+//-->
+</script>

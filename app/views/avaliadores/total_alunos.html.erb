@@ -1,0 +1,8 @@
+<% if @alunos.empty? %>
+	<br /><br />
+	<div class="infobar"><b>Nenhum aluno foi encontrado.<b></div>
+<% else %>
+	<div>
+		<%= render :partial=>"alunos", :locals=>{:alunos=>@alunos}%>
+	</div>
+<% end %>

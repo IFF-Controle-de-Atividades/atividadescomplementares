@@ -1,0 +1,46 @@
+<FIELDSET>
+	<LEGEND><h2 id="signin">Sign in</h2></LEGEND>
+	<div id="sbar">
+		<div class="attention">
+			<h3>Senhor(a) Avaliador(a)</h3>
+			<p>Para continuar coloque suas credenciais. Se 
+			não foi autorizado por favor entre em contato com
+			o administrador.
+		</div>
+	</div>
+
+	<SECTION class="session">
+	
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			  	<div>
+					<%= f.label "E-mail: ", :class=>"small" %><br />
+					<%= f.email_field :email, :size=>"50" %>
+				</div>
+
+				<div>
+					<%= f.label "Senha: ", :class=>"small"  %><br />
+					<%= f.password_field :password, :size=>"50" %>
+				</div>
+				<br />
+				<% if devise_mapping.rememberable? -%>
+					<div>
+						<%= f.check_box :remember_me %> <%= f.label "Me Mantenha Conectado!", :class=>"small"  %>
+					</div>
+				<% end -%>
+			  	<%= link_to "Esqueceu sua senha?", new_password_path(resource_name), :class=>"small"  %></div>
+        <br></FIELDSET>
+    <div class="botao_left">
+                <span class="luz">
+                        <%= f.submit "Enviar", :class=>"botao", :id=>'id_botao' %>
+                </span>
+        </div>
+        <div class="botao_left">
+        <span class="luz">
+                <button type="button" class="botao", id='id_botao' onclick="JavaScript:index()" >
+                Cancelar
+            </button>
+        </span>
+    </div>
+<%- end -%>
+
+

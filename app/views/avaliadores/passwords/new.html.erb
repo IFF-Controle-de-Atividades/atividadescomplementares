@@ -1,0 +1,32 @@
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/avaliador/sign_in";
+    }
+</script>
+
+<FIELDSET><LEGEND><h2 id="signin"><label>Esqueceu sua senha</h2></label></LEGEND>
+
+	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  	<%= devise_error_messages! %>
+  	<div>
+	   <label class='small'>Digite abaixo o seu endereço de e-mail para que possamos enviar as informações de redefinição de senha.</label>
+	   <br>
+	   <%= f.label "E-mail: ", :class=>"small" %><br />
+	   <%= f.email_field :email, :size=>"50" %>
+	</div>
+	<br /></FIELDSET>
+    <div class="botao_left">
+		<span class="luz">
+			<%= f.submit "Enviar", :class=>"botao", :id=>'id_botao' %>
+		</span>
+	</div>
+	<div class="botao_left">
+    	<span class="luz">
+        	<button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+                Cancelar
+            </button>
+        </span>
+    </div>
+
+<%- end -%>

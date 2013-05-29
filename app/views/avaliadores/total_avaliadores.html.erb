@@ -1,0 +1,35 @@
+<% if avaliador_signed_in? and current_avaliador.admin %>
+    <br /><br />
+    <FIELDSET><LEGEND >
+        <div id="FieldButton">
+            <%= link_to "Novo Avaliador", novo_avaliador_cadastro_path, :class=>"buttonx" %>
+        </div></LEGEND>
+<%-end-%>
+<br />
+<% if avaliador_signed_in? and current_avaliador.admin %>
+    <div class="atividades_table_container">
+        <% if @avaliadores.empty? %>
+            <br /><br />
+            <sidebar class="infobar"><b>Não foram encontrados avaliadores.<b></sidebar>
+        <% else %>
+            <div>
+                <%= render :partial=>"total", :locals=>{:avaliadores=>@avaliadores}%>
+            </div>
+        <% end %>
+   </div>
+   </FIELDSET>   
+<% else %>
+    <FIELDSET>
+    <div class="atividades_table_container">
+        <% if @avaliadores.empty? %>
+            <br /><br />
+            <sidebar class="infobar"><b>Não foram encontrados avaliadores.<b></sidebar>
+        <% else %>
+            <div>
+                <%= render :partial=>"total", :locals=>{:avaliadores=>@avaliadores}%>
+            </div>
+        <% end %>
+   </div>
+   </FIELDSET>
+<%-end-%>
+

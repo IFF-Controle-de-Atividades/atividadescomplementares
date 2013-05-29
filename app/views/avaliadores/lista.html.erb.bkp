@@ -1,0 +1,20 @@
+<fieldset>
+	<% @avaliadores.each do |avaliador| %>
+		<table id="nav">
+			<tr>
+			<th>
+				<nav><ul  class="menu main-ul">
+				<li>
+					<div class="wp-caption wrap"><center>
+						<%= image_tag(avaliador.photo.url(:tamanho_pequeno)) %>
+						<p class="wp-caption-text">
+						<%= link_to avaliador.nome,
+						"/lista-de-avaliacoes/#{avaliador.id}"  %>
+						</p></center>
+					</div>
+				</li></ul></nav>
+			</th>
+			</tr>
+		</table>
+	<% end %>
+</fieldset>

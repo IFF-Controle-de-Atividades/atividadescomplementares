@@ -1,0 +1,76 @@
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/avaliador/home";
+    }
+</script>
+<strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
+<br>
+<FIELDSET>
+    <LEGEND>
+    <h2><LABEL>Editando 
+    <%= resource_name.to_s.humanize %>
+    &nbsp<%= current_avaliador.nome%>
+    </h2></LABEL>
+    </LEGEND>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |l| %>
+  <%= render "shared/object_error_messages", :object => @avaliador %>
+  <div class="field">
+       <%= l.label "Nome: ", :class=>"small" %><i id="red">*</i>
+       <%= l.text_field :nome , :size=>"30", :id=>"av_text_editor" %>
+  </div>
+  <div class="field">
+       <%= l.label "Titulação: ", :class=>"small" %>
+       <%= l.text_field :titulacao, :size=>"30" %>
+  </div>
+  <div class="field">
+       <FIELDSET ID="sex_registration">
+            <LEGEND><%= l.label "Sexo", :class=>"small" %></LEGEND>
+            <%= l.radio_button :sexo, "Masculino" %>
+            <%= l.label "Masculino", :class=>"small" %>
+            <%= l.radio_button :sexo, "Feminino" %>
+            <%= l.label "Feminino", :class=>"small" %>
+       </FIELDSET>
+  </div>
+  <div class="field">
+    <%= l.label "Matricula: ", :class=>"small" %><i id="red">*</i>
+    <%= l.text_field :matricula, :size=>"29" %>
+  </div>
+  <div class="field">
+    <%= l.label "Email: ", :class=>"small" %><i id="red">*</i>
+    <%= l.email_field :email, :size=>"30", :id=>"av_email_text_editor"%>
+  </div>
+
+  <div class="field">
+    <h4>
+        <i id="blue", class="small">(Deixe em branco se não quiser alterar a sua senha!)</i>
+    </h4>
+    <%= l.label "Senha: ", :class=>"small" %>
+    <%= l.password_field :password , :size=>"30",:id=>"av_pass_text_editor" %>
+  </div>
+  <div class="field">
+    <h4>
+        <i id="blue", class="small">(Repita a senha para confirmar a alteração!)</i>
+    </h4>
+    <%= l.label "Repita sua senha: ", :class=>"small" %>
+    <%= l.password_field :password_confirmation, :size=>"22" %>
+  </div>
+  <div class="field">
+    <h4><i id="red" , class="small">(Informe a sua senha atual para confirmar as alterações! )</b></i><br /></h4>
+    <%= l.label "Sua senha atual: ", :class=>"small" %><i id="red">*</i>
+    <%= l.password_field :current_password, :size=>"22" %>
+  </div>
+  <BR /></FIELDSET>
+  <div class="botao_left">
+    <span class="luz">
+        <%= l.submit "Atualizar ⌘", :class=>"botao", :id=>'id_botao' %>
+    </span>
+  </div>
+  <div class="botao_left">
+        <p>
+        <button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+            Cancelar&nbsp<font size="30">༺</p></font>
+        </button>
+    </div>
+<% end %>

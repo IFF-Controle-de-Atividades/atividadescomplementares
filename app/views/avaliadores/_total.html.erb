@@ -1,0 +1,51 @@
+<table id="home" class='avaliacoes' summary="Atividades">
+    <caption>Avaliadores</caption>
+    <thead>
+       <tr>
+           <th>Nome</th>
+            <th>Titulação</th>
+            <th>Admin</th>
+            <th>E-mail</th>
+            <th>Status</th>
+            <% if avaliador_signed_in? and current_avaliador.admin %>
+                <th>Opções</th>
+                <th>Progresso de Avaliações</th>
+            <%-end-%>
+        </tr>
+     </thead>
+
+     <tbody id="home">
+        <% @avaliadores.each do |avaliador| %>
+           <tr>
+              <td><center><%= avaliador.nome %></td></center>
+              <td><center><%= avaliador.titulacao %></td></center>
+              <td><center><%= yes_or_no?(avaliador.admin) %></td></center>
+              <td><center><%= avaliador.email %></td></center>
+              <td><center><%= status?(avaliador.ativo) %></td></center>
+              <% if avaliador_signed_in? and current_avaliador.admin %>
+                 <td>
+                    <center>
+                      <%= link_to "Editar Status",editar_avaliador_status_path(avaliador) %>
+                    </center>
+                 </td>
+                 <td>
+                    <center>
+                      <%= link_to "Avaliações",exibir_avaliacoes_complementares_path(avaliador.id)  %>
+                    </center>
+                  </td>
+                <%-end-%>
+           </tr>
+         <% end %>
+      </tbody>
+</table>
+<br />
+<div class="flickr_pagination pagination">
+    <div class="page_info">
+     <%= will_paginate @avaliadores, :previous_label => "&laquo; Anterior", :next_label => "Próxima &raquo;", :container => false%>
+     </div>
+</div>
+
+
+
+
+

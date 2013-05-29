@@ -1,4 +1,4 @@
-#coding:utf-8
+#encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
   devise_for :avaliadores
   devise_for :alunos

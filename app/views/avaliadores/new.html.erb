@@ -1,0 +1,58 @@
+<script language= "JavaScript">
+    function index()
+    {
+        location.href = "/adim/TOTAL_AVALIADORES";
+    }
+</script>
+
+<BR />
+<strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
+
+<FIELDSET>
+<LEGEND><h1><label>Novo Avaliador</label></h1></LEGEND>
+<%= form_for(@avaliador, :url=>{:action=>'create'}) do |l| %>
+     <%= render "shared/object_error_messages", :object => @avaliador %> 
+    <div class="field">
+       <b><%= l.label "Nome:" %></b>&nbsp<i id="red">*&nbsp</i>
+       <%= l.text_field :nome, :placeholder => "Nome", :size=>"34" %>
+    </div>
+    <div class="field">
+       <b><%= l.label "Titulação:" %></b>&nbsp<i id="red">*&nbsp</i>
+        <%= l.text_field :titulacao, :placeholder => "Titulação" %>
+    </div>
+    <div class="field">
+        <b><%= l.label "Sexo:" %>&nbsp<i id="red">*&nbsp</i></b>
+        <%= l.radio_button :sexo, "Masculino" %>&nbsp<%= l.label "Masculino" %>
+        <%= l.radio_button :sexo, "Feminino" %>&nbsp<%= l.label "Feminino" %>
+    </div>
+    <div class="field">
+      <b><%= l.label "Matricula:" %></b>&nbsp<i id="red">*&nbsp</i>
+        <%= l.text_field :matricula, :placeholder => "000000000" %>
+    </div>
+    <div class="field">
+        <b><%= l.label "E-mail:" %></b>&nbsp<i id="red">*&nbsp</i>
+        <%= l.email_field :email, :placeholder => "example@example.com", :size=>"33" %>
+    </div>
+
+    <div class="field">
+        <b><%= l.label "Senha:" %></b>&nbsp<i id="red">*&nbsp</i>
+        <%= l.password_field :password, :placeholder => "Uma senha por favor", :size=>"33" %>
+    </div>
+
+    <div class="field">
+        <i id="red">(Precisamos que confirme a senha do avaliador )</b></i><br />
+        <b><%= l.label "Repita a senha:" %>&nbsp<i id="red">*&nbsp</i>
+        <%= l.password_field :password_confirmation, :size=>"24" %>
+    </div>
+    </FIELDSET>
+    <div class="botao_left">
+        <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>
+    </div>
+    <div class="botao_left">
+        <p>
+        <button type="button" class="botao", id='id_botao2' onclick="JavaScript:index()" >
+            Cancelar&nbsp<font size="30"></p></font>
+        </button>
+    </div>
+<%- end -%>
+
