@@ -1,8 +1,9 @@
+#coding:utf-8
 Atividadescomplementares::Application.routes.draw do
+  devise_for :avaliadores
   devise_for :alunos
 
   resources :atividades
-
   resources :avaliacoes,
           :only =>
           [
@@ -19,38 +20,27 @@ Atividadescomplementares::Application.routes.draw do
      get "/aluno/sign_out" => "devise/sessions#destroy", :as => :aluno_session_out
      get "/aluno/home/" => "alunos#home", :as => :aluno_home
      get "/listadeatividades" => "alunos#atividades", :as => :listadeatividades
-
      match "/selecionar_imagem/:id/selecionar_imagem",:controller => "alunos",:action=>"selecionar_imagem", :as => :selecionar_imagem
-
      match "/selecionar_imagem/:id/salvar_imagem",:controller => "alunos", :action=>"load_imagem",:as => :salvar_imagem
-
      match "/selecionar_imagem/:id/remover_imagem",:controller => "alunos", :action=>"remover_imagem", :as => :remover_imagem
   end
 
   as :avaliacoes do
-      put "avaliacoes/designar", :as=> :designar
-      
+      put "avaliacoes/designar", :as=> :designar 
       get "avaliacoes/listar_atividades_complementares" => "avaliacoes#listar_atividades_complementares", :as => :atividades_complementares
       #get "avaliacoes/avaliar_atividade"
       #get "avaliacoes/avaliar"
-
       get "avaliacoes/listar_avaliacoes"
       get "avaliacoes/exibir_avaliacoes/:id"=> "avaliacoes#exibir_avaliacoes", :as => :exibir_avaliacoes_complementares
-
       match "/lista-de-atividades/:id", :controller =>"avaliacoes", :action=>"list", :as=> :listagem_de_atividades_do_aluno_x
-
       match "/atividades_de/:nome/:id", :controller => "avaliacoes", :action=>"x_list"
       get "/avaliar_atividades/:id",:controller => "avaliacoes", :action=>"x_list", :as=>:x_list
-
       match "/avaliar_atividade/:id/", :controller => "avaliacoes", :action=>"avaliar_atividade", :as => :avaliar_atividade
-
       match "/avaliar_atividade/:id/avaliar", :controller => "avaliacoes", :action=>"avaliar", :as => :update_avaliar_atividade
-
   end
 
   as :avaliador do
      post "/avaliador/sign_in" => "devise/sessions#create", :as => :avaliador_session
-
      get "/avaliador/sign_in" => "devise/sessions#new", :as => :new_avaliador_session
      get "/avaliador/sign_out" => "devise/sessions#destroy",:as => :avaliador_session_out
      get "/avaliador/sign_up" => "avaliadores#new", :as => :novo_avaliador_cadastro
@@ -61,10 +51,7 @@ Atividadescomplementares::Application.routes.draw do
      get "/TOTAL_ATIVIDADES" => "avaliadores#total_alunos", :as => :total_atividades
      get "/TOTAL_AVALIACOES" => "avaliadores#listar_avaliacoes", :as => :total_avaliacoes
      get "/admin/geracao_de_relatorio/pdf" => "avaliadores#relatorios_pdf", :as => :admin_relatorio_em_pdf
-
-     match "/localizar-atividades", :controller => "avaliadores", :action=>"localizar_atividade", :as=>:localizar_atividades
-     
-     
+     match "/localizar-atividades", :controller => "avaliadores", :action=>"localizar_atividade", :as=>:localizar_atividades     
      match "/avaliador/editar_status/:id", :controller => "avaliadores", :action =>"editar_status", :as => :editar_avaliador_status
      match "/avaliador/edit_status/:id/atualizar_status", :controller => "avaliadores", :action =>"atualizar_status", :as => :atualizar_avaliador_status
      match "/avaliador/:id/selecionar_imagem",:controller => "avaliadores", :action=>"selecionar_imagem", :as => :selecionar_imagem_avaliador

@@ -7,7 +7,6 @@ class Aluno
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   field :nome, :type => String
   field :idade, :type => Integer
   field :sexo, :type => String
@@ -16,7 +15,8 @@ class Aluno
   field :curso, :type => String
   field :periodo, :type => String
 
-
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
