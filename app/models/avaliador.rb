@@ -3,7 +3,8 @@ class Avaliador
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes 
   include Mongoid::Timestamps
-  include Mongoid::Paperclip
+  #include Mongoid::Paperclip
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -12,10 +13,6 @@ class Avaliador
   field :sexo, type: String
   field :matricula, type: String
   field :titulacao, type: String
-  field :foto_file_name, type: String
-  field :foto_content_type, type: String
-  field :foto_file_size, type: String
-  field :foto_update_at, type: Date
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -52,11 +49,10 @@ class Avaliador
   ## Token authenticatable
   # field :authentication_token, :type => String
 
-  attr_accessor :foto
   attr_accessible :nome, :matricula , :sexo,
                   :titulacao, :email, :password, 
                   :password_confirmation, :remember_me, 
-                  :admin, :ativo, :foto
+                  :admin, :ativo
 
   has_many :atividades
 
@@ -72,22 +68,4 @@ class Avaliador
   validates_uniqueness_of :nome,:message=>" - Já se encontra em uso."
   validates_uniqueness_of :email, :message=>" Já se encontra em uso."
   validates_uniqueness_of :matricula, :message=>" Já se encontra em uso."
-
-  has_mongoid_attached_file :foto, :styles => {
-                                                  :tamanho_pequeno=>["150x150",:png],
-                                                  :tamanho_medio=>["320x240",:png],
-                                                  :tamanho_grande=>["600x600",:png]
-  },
-  :path=>":rails_root/public/anexos/user_files/:class/:attachment/:id/:style_:basename.:extension",
-  :url=> "/anexos/user_files/:class/:attachment/:id/:style_:basename.:extension", 
-  :rounded=> 8,
-  :default_url=> "samples/user-info.png"
-
-  validates_attachment_size :foto, :less_than=> 20.megabytes
-  validates_attachment_content_type :foto, 
-                                    :content_type=> [
-                                                        "image/jpg",
-                                                         "image/jpeg",
-                                                         "image/png"
-                                                    ]
 end
