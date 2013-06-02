@@ -1,3 +1,4 @@
+#encoding:utf-8
 class Avaliador
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes 
@@ -11,10 +12,10 @@ class Avaliador
   field :sexo, type: String
   field :matricula, type: String
   field :titulacao, type: String
-  field :photo_file_name, type: String
-  field :photo_content_type, type: String
-  field :photo_file_size, type: String
-  field :photo_update_at, type: Date
+  field :foto_file_name, type: String
+  field :foto_content_type, type: String
+  field :foto_file_size, type: String
+  field :foto_update_at, type: Date
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -50,4 +51,43 @@ class Avaliador
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  attr_accessor :foto
+  attr_accessible :nome, :matricula , :sexo,
+                  :titulacao, :email, :password, 
+                  :password_confirmation, :remember_me, 
+                  :admin, :ativo, :foto
+
+  has_many :atividades
+
+  validates_presence_of :nome, :message=>" - Deve ser preenchido."
+  validates_presence_of :sexo,:message => " - Deve ser preenchido."
+  validates_presence_of :titulacao, :message=> " - Deve ser preenchido."
+  validates_presence_of :matricula,:message=>" - Deve ser preenchido."
+
+  validates_length_of   :nome, :maximum=> 50, :message=> " - Deve conter no máximo 50 caracteres"
+  validates_length_of   :titulacao, :maximum=>80,:message=>" - Deve conter máximo 80 caracteres"
+  validates_length_of   :matricula,:maximum=>12,:message=>" - Deve conter no máximo de 12 caracteres."
+
+  validates_uniqueness_of :nome,:message=>" - Já se encontra em uso."
+  validates_uniqueness_of :email, :message=>" Já se encontra em uso."
+  validates_uniqueness_of :matricula, :message=>" Já se encontra em uso."
+
+  has_mongoid_attached_file :foto, :styles => {
+                                                  :tamanho_pequeno=>["150x150",:png],
+                                                  :tamanho_medio=>["320x240",:png],
+                                                  :tamanho_grande=>["600x600",:png]
+  },
+  :path=>":rails_root/public/anexos/user_files/:class/:attachment/:id/:style_:basename.:extension",
+  :url=> "/anexos/user_files/:class/:attachment/:id/:style_:basename.:extension", 
+  :rounded=> 8,
+  :default_url=> "samples/user-info.png"
+
+  validates_attachment_size :foto, :less_than=> 20.megabytes
+  validates_attachment_content_type :foto, 
+                                    :content_type=> [
+                                                        "image/jpg",
+                                                         "image/jpeg",
+                                                         "image/png"
+                                                    ]
 end

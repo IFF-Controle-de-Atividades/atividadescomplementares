@@ -55,7 +55,11 @@
     </h4>
     <%= l.label "Repita sua senha: ", :class=>"small" %>
     <%= l.password_field :password_confirmation, :size=>"22" %>
-  </div>
+  </div><br />
+  <div class="field">
+       <b><%= l.label "Imagem:" %></b><br>
+       <%= l.file_field :foto %><BR /><i id="blue">(Deixe em branco se não quiser alterar a sua imagem!)</i><br /></b><br />
+    </div>
   <div class="field">
     <h4><i id="red" , class="small">(Informe a sua senha atual para confirmar as alterações! )</b></i><br /></h4>
     <%= l.label "Sua senha atual: ", :class=>"small" %><i id="red">*</i>

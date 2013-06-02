@@ -1,18 +1,32 @@
 #encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
-  devise_for :avaliadores
-  devise_for :alunos
-
+  resources :avaliadores
+                     
   resources :atividades
-  resources :avaliacoes,
-          :only =>
-          [
-            :listar_atividades_complementares,
-            :avaliar_atividade,
-            :avaliar,
-            :listar_avaliacoes,
-            :exibir_avaliacoes
-          ],:collection => { :designar => :put }
+  resources :avaliacoes, 
+            :only =>[
+                     :listar_atividades_complementares, 
+                     :avaliar_atividade,
+                     :avaliar, 
+                     :listar_avaliacoes, 
+                     :exibir_avaliacoes
+                    ], 
+            :collection => { :designar => :put }
+
+  devise_for :alunos
+  devise_for :avaliadores, :skip => [:sessions]
+
+  as :avaliacoes do
+      put "avaliacoes/designar", :as=> :designar
+      get "avaliacoes/listar_atividades_complementares" => "avaliacoes#listar_atividades_complementares", :as => :atividades_complementares
+      get "avaliacoes/listar_avaliacoes"
+      get "avaliacoes/exibir_avaliacoes/:id"=> "avaliacoes#exibir_avaliacoes", :as => :exibir_avaliacoes_complementares
+      match "/lista-de-atividades/:id", :controller =>"avaliacoes", :action=>"list", :as=> :listagem_de_atividades_do_aluno_x
+      match "/atividades_de/:nome/:id", :controller => "avaliacoes", :action=>"x_list"
+      get "/avaliar_atividades/:id",:controller => "avaliacoes", :action=>"x_list", :as=>:x_list
+      match "/avaliar_atividade/:id/", :controller => "avaliacoes", :action=>"avaliar_atividade", :as => :avaliar_atividade
+      match "/avaliar_atividade/:id/avaliar", :controller => "avaliacoes", :action=>"avaliar", :as => :update_avaliar_atividade
+  end
 
   as :aluno do
      get "/aluno/sign_in" => "devise/sessions#new", :as => :new_aluno_session
@@ -22,21 +36,7 @@ Atividadescomplementares::Application.routes.draw do
      get "/listadeatividades" => "alunos#atividades", :as => :listadeatividades
      match "/selecionar_imagem/:id/selecionar_imagem",:controller => "alunos",:action=>"selecionar_imagem", :as => :selecionar_imagem
      match "/selecionar_imagem/:id/salvar_imagem",:controller => "alunos", :action=>"load_imagem",:as => :salvar_imagem
-     match "/selecionar_imagem/:id/remover_imagem",:controller => "alunos", :action=>"remover_imagem", :as => :remover_imagem
-  end
-
-  as :avaliacoes do
-      put "avaliacoes/designar", :as=> :designar 
-      get "avaliacoes/listar_atividades_complementares" => "avaliacoes#listar_atividades_complementares", :as => :atividades_complementares
-      #get "avaliacoes/avaliar_atividade"
-      #get "avaliacoes/avaliar"
-      get "avaliacoes/listar_avaliacoes"
-      get "avaliacoes/exibir_avaliacoes/:id"=> "avaliacoes#exibir_avaliacoes", :as => :exibir_avaliacoes_complementares
-      match "/lista-de-atividades/:id", :controller =>"avaliacoes", :action=>"list", :as=> :listagem_de_atividades_do_aluno_x
-      match "/atividades_de/:nome/:id", :controller => "avaliacoes", :action=>"x_list"
-      get "/avaliar_atividades/:id",:controller => "avaliacoes", :action=>"x_list", :as=>:x_list
-      match "/avaliar_atividade/:id/", :controller => "avaliacoes", :action=>"avaliar_atividade", :as => :avaliar_atividade
-      match "/avaliar_atividade/:id/avaliar", :controller => "avaliacoes", :action=>"avaliar", :as => :update_avaliar_atividade
+     match "/selecionar_imagem/:id/remover_imagem",:controller => "alunos",:action=>"remover_imagem", :as => :remover_imagem
   end
 
   as :avaliador do
@@ -51,7 +51,7 @@ Atividadescomplementares::Application.routes.draw do
      get "/TOTAL_ATIVIDADES" => "avaliadores#total_alunos", :as => :total_atividades
      get "/TOTAL_AVALIACOES" => "avaliadores#listar_avaliacoes", :as => :total_avaliacoes
      get "/admin/geracao_de_relatorio/pdf" => "avaliadores#relatorios_pdf", :as => :admin_relatorio_em_pdf
-     match "/localizar-atividades", :controller => "avaliadores", :action=>"localizar_atividade", :as=>:localizar_atividades     
+     match "/localizar-atividades", :controller => "avaliadores", :action=>"localizar_atividade", :as=>:localizar_atividades
      match "/avaliador/editar_status/:id", :controller => "avaliadores", :action =>"editar_status", :as => :editar_avaliador_status
      match "/avaliador/edit_status/:id/atualizar_status", :controller => "avaliadores", :action =>"atualizar_status", :as => :atualizar_avaliador_status
      match "/avaliador/:id/selecionar_imagem",:controller => "avaliadores", :action=>"selecionar_imagem", :as => :selecionar_imagem_avaliador
@@ -79,17 +79,15 @@ Atividadescomplementares::Application.routes.draw do
 
   root :to => "home#index"
 
-
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
+  #   match "products/:id" => "catalog#view"
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  #   match "products/:id/purchase" => "catalog#purchase", :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
@@ -98,12 +96,12 @@ Atividadescomplementares::Application.routes.draw do
   # Sample resource route with options:
   #   resources :products do
   #     member do
-  #       get 'short'
-  #       post 'toggle'
+  #       get "short"
+  #       post "toggle"
   #     end
   #
   #     collection do
-  #       get 'sold'
+  #       get "sold"
   #     end
   #   end
 
@@ -117,7 +115,7 @@ Atividadescomplementares::Application.routes.draw do
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get 'recent', :on => :collection
+  #       get "recent", :on => :collection
   #     end
   #   end
 
@@ -130,11 +128,11 @@ Atividadescomplementares::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # This is a legacy wild controller route that"s not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id))(.:format)'
+  #match ":controller(/:action(/:id))(.:format)"
 end

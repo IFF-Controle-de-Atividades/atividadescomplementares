@@ -1,3 +1,21 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 1e87bb54d545dafe0d26644d4c3c558938cc593a
+  specs:
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+
+GIT
+  remote: git://github.com/jnicklas/carrierwave-mongoid.git
+  revision: 35361573e8747cb66de6f838ba779000dbe89b15
+  specs:
+    carrierwave-mongoid (0.6.0)
+      carrierwave (~> 0.8.0)
+      mongoid (>= 3.0, < 5.0)
+      mongoid-grid_fs (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,10 +79,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.1)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -143,13 +157,16 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.23)
+    mini_magick (3.4)
+      subexec (~> 0.2.1)
     mongoid (3.1.4)
       activemodel (~> 3.2)
       moped (~> 1.4)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid-paperclip (0.0.8)
-      paperclip (>= 2.3.6)
+    mongoid-grid_fs (1.8.0)
+      mime-types (~> 1.19)
+      mongoid (~> 3.0)
     mongoid-rspec (1.8.1)
       mongoid (>= 3.0.1)
       rake
@@ -170,12 +187,6 @@ GEM
     notifier (0.4.1)
     origin (1.1.0)
     orm_adapter (0.4.0)
-    paperclip (3.4.2)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.0)
-      mime-types
     pdf-reader (1.3.0)
       Ascii85 (~> 1.0.0)
       afm (~> 0.2.0)
@@ -198,6 +209,8 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-raw-upload (1.1.0)
+      json
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -249,6 +262,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    subexec (0.2.3)
     terminal-table (1.4.5)
     test_notifier (1.0.1)
       notifier
@@ -292,6 +306,8 @@ DEPENDENCIES
   binding_of_caller (>= 0.7.1)
   capistrano
   capybara (>= 2.0.3)
+  carrierwave!
+  carrierwave-mongoid!
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner (>= 1.0.0.RC1)
@@ -302,12 +318,13 @@ DEPENDENCIES
   guard-rspec
   jquery-rails
   launchy (>= 2.2.0)
+  mini_magick (= 3.4)
   mongoid (>= 3.1.2)
-  mongoid-paperclip
   mongoid-rspec (>= 1.7.0)
   mongoid_auto_increment_id (>= 0.6.0)
   prawn
   quiet_assets (>= 1.0.2)
+  rack-raw-upload (= 1.1.0)
   rails (= 3.2.11)
   rb-fsevent
   rspec

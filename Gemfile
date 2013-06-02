@@ -6,15 +6,19 @@ gem "jquery-rails"
 gem "mongoid", ">= 3.1.2"
 gem "mongoid_auto_increment_id", ">=0.6.0"
 gem "webrat"
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-sdk", "~> 1.3.4"
+
+gem 'carrierwave', git: 'git://github.com/carrierwaveuploader/carrierwave.git'
+gem 'carrierwave-mongoid', :github => 'jnicklas/carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick', '3.4'
+gem 'rack-raw-upload', '1.1.0'
+
 gem "devise", ">= 2.2.3"
 gem 'will_paginate_mongoid'
 gem 'actionmailer_inline_css'
+
 # Deploy with Capistrano
 gem "capistrano"
-
-
 
 group :assets do
   gem "sass-rails",   "~> 3.2.3"
@@ -32,7 +36,6 @@ group :development, :test do
   gem 'tlsmail'
   gem 'prawn'
   gem 'bcrypt-ruby', '~> 3.0.0'
-
 end
 
 group :test do
@@ -52,3 +55,5 @@ group :development do
   gem "better_errors", ">= 0.7.2"
   gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx] 
 end
+
+#gem "mongoid-paperclip", :require => "mongoid_paperclip"

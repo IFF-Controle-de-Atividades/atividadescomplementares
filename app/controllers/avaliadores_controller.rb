@@ -125,7 +125,7 @@ class AvaliadoresController < ApplicationController
     def remover_imagem
         @avaliador = Avaliador.find(params[:id ])
             respond_to do |format|
-                if @avaliador.update_attributes(:photo => nil)
+                if @avaliador.update_attributes(:foto => nil)
                     format.html { redirect_to :action=> "index" }
                     flash[:notice] = "Sua imagem foi removida!"
                     format.json { render json: @avaliador, status: :created, location: @avaliador }
