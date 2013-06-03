@@ -1,6 +1,9 @@
 #encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
+  match "/upload/grid/*path" => "gridfs#serve"
   resources :avaliadores
+  
+  resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:imagem]
                      
   resources :atividades
   resources :avaliacoes, 

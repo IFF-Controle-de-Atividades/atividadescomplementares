@@ -1,6 +1,5 @@
 #encoding:utf-8
 class AlunosController < ApplicationController
-	
 	before_filter :authenticate_aluno!
 	before_filter :current_aluno
 	
@@ -14,32 +13,21 @@ class AlunosController < ApplicationController
     
     def load_imagem
         @aluno = Aluno.find(params[:id ])
-        respond_to do |format|
-            if @aluno.update_attributes(params[:aluno])
-                format.html { redirect_to aluno_home_path}
-                flash[:notice] = "Sua imagem foi atualizada!"
-                format.json { render json: @aluno, status: :created, location: @aluno }
-            else
-                format.html { render action: "home" }
-                format.json { render json: @aluno.errors, status: :unprocessable_entity }
-            end
+        if @aluno.update_attributes(:foto)
+            flash[:notice] = "Sua imagem foi inserida com sucesso"
+            redirect_to aluno_home_path
         end
     end    
     
     def remover_imagem
         @aluno = Aluno.find(params[:id ])
         respond_to do |format|
-            if @aluno.update_attributes(:photo => nil)
-                format.html { redirect_to aluno_home_path}
-                flash[:notice] = "Sua imagem foi removida!"
-                format.json { render json: @aluno, status: :created, location: @aluno }
-            else
-                format.html { render action: "home" }
-                format.json { render json: @aluno.errors, status: :unprocessable_entity }
+            if @aluno.update_attributes(:foto => nil)
+                flash[:notice] = "Sua imagem foi removida para colocar novamente insira outra"
+                format.html { redirect_to aluno_home_path }
             end
         end
     end
-    
    
     def atividades
 	end

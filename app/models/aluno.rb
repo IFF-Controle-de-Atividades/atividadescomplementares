@@ -3,11 +3,7 @@ class Aluno
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes 
   include Mongoid::Timestamps
-  #include Mongoid::Paperclip
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   field :nome, :type => String
   field :idade, :type => Integer
   field :sexo, :type => String
@@ -15,7 +11,11 @@ class Aluno
   field :matricula, :type => String
   field :curso, :type => String
   field :periodo, :type => String
-
+  
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   
   ## Database authenticatable
@@ -50,8 +50,10 @@ class Aluno
   ## Token authenticatable
   # field :authentication_token, :type => String
 
-  attr_accessible :nome, :idade, :sexo,:endereco, :curso,:periodo,:matricula,:email, :password, :password_confirmation, :remember_me
- 
+  #VALIDAÇÕES E PARAMETROS ACESSIVEIS
+
+  attr_accessible :nome, :idade, :sexo,:endereco, :curso,:periodo,:matricula,:email, :password, :password_confirmation, :remember_me, :foto
+  mount_uploader :foto, ImagemUploader
   has_many :atividades
   
   validates_presence_of :nome, :message=>" - Deve ser preenchido."
@@ -70,13 +72,14 @@ class Aluno
 
   private
     def primeira_letra_do_nome_deve_deve_ser_maiuscula
-      errors.add("nome"     , "A 1º letra deve ser Maiuscula") unless nome=~ /[A-Z].*/
+      errors.add("nome", "A 1º letra deve ser Maiuscula") unless nome=~ /[A-Z].*/
     end
 
   private
     def primeira_letra_do_endereco_deve_ser_maiuscula
       errors.add("endereco", "A 1º letra deve ser Maiuscula") unless endereco=~ /[A-Z].*/        
-    end  
+    end
+
   
   scope :buscar_pelo_nome, lambda{|nome| where(:nome => nome)} 
 end

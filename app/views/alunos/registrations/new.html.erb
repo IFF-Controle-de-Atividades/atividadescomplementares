@@ -8,7 +8,7 @@
 <strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
 <FIELDSET><LEGEND><h2><label>Cadastrar-se</label></h2></LEGEND>
 <DIV id="localization">
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |l| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:html => {:multipart => true}) do |l| %>
     <%= render "shared/error_messages", :target => @aluno %>
     <div class="field">
       <%= l.label "Nome: ", :class=>"small" %><i id="red">*</i>
@@ -45,8 +45,8 @@
     </div>
 
     <div class="field">
-       <%= l.label "Curso: ", :class=>"small" %>
-       <%= l.select :curso, options_for_select(%w{ Sistemas-de-Informação }) %>
+       <%= l.label "Curso: ", :class=>"small" %><i id="red">*</i>
+       <%= l.text_field :curso, :size=>"53.5" %>
     </div>
 
     <div class="field">

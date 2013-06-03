@@ -3,7 +3,7 @@ class Avaliador
   include Mongoid::Document
   include Mongoid::MultiParameterAttributes 
   include Mongoid::Timestamps
-  #include Mongoid::Paperclip
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

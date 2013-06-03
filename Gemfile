@@ -8,10 +8,12 @@ gem "mongoid_auto_increment_id", ">=0.6.0"
 gem "webrat"
 gem "aws-sdk", "~> 1.3.4"
 
-gem 'carrierwave', git: 'git://github.com/carrierwaveuploader/carrierwave.git'
-gem 'carrierwave-mongoid', :github => 'jnicklas/carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'mini_magick', '3.4'
+gem 'json'
+gem 'bson_ext'
 gem 'rack-raw-upload', '1.1.0'
+gem 'carrierwave'
+gem 'mini_magick', :git => 'git://github.com/probablycorey/mini_magick.git'
+gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git"
 
 gem "devise", ">= 2.2.3"
 gem 'will_paginate_mongoid'
@@ -56,4 +58,4 @@ group :development do
   gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx] 
 end
 
-#gem "mongoid-paperclip", :require => "mongoid_paperclip"
+# gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git"
