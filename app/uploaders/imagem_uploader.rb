@@ -12,10 +12,6 @@ class ImagemUploader < CarrierWave::Uploader::Base
   end
 
   process :resize_to_fit => [100, 100]
-  # version :user_bar do
-  #    process :resize_to_fill => [190, 190]
-  # end
-
   version :thumb do
      process :resize_to_fill => [90, 90]
   end
