@@ -22,4 +22,5 @@ class Atividade
   field :carga_horaria_aceita, type: Integer
   field :justificativa, type: String
   
+  mount_uploader :comprovante, ComprovanteUploader
 end

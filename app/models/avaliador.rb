@@ -56,16 +56,16 @@ class Avaliador
 
   has_many :atividades
 
-  validates_presence_of :nome, :message=>" - Deve ser preenchido."
-  validates_presence_of :sexo,:message => " - Deve ser preenchido."
-  validates_presence_of :titulacao, :message=> " - Deve ser preenchido."
-  validates_presence_of :matricula,:message=>" - Deve ser preenchido."
+  # validates_presence_of :nome, :message=>" - Deve ser preenchido."
+  # validates_presence_of :sexo,:message => " - Deve ser preenchido."
+  # validates_presence_of :titulacao, :message=> " - Deve ser preenchido."
+  # validates_presence_of :matricula,:message=>" - Deve ser preenchido."
 
-  validates_length_of   :nome, :maximum=> 50, :message=> " - Deve conter no máximo 50 caracteres"
-  validates_length_of   :titulacao, :maximum=>80,:message=>" - Deve conter máximo 80 caracteres"
-  validates_length_of   :matricula,:maximum=>12,:message=>" - Deve conter no máximo de 12 caracteres."
+  # validates_length_of   :nome, :maximum=> 50, :message=> " - Deve conter no máximo 50 caracteres"
+  # validates_length_of   :titulacao, :maximum=>80,:message=>" - Deve conter máximo 80 caracteres"
+  # validates_length_of   :matricula,:maximum=>12,:message=>" - Deve conter no máximo de 12 caracteres."
 
-  validates_uniqueness_of :nome,:message=>" - Já se encontra em uso."
-  validates_uniqueness_of :email, :message=>" Já se encontra em uso."
-  validates_uniqueness_of :matricula, :message=>" Já se encontra em uso."
+  # validates_uniqueness_of :nome,:message=>" - Já se encontra em uso."
+  # validates_uniqueness_of :email, :message=>" Já se encontra em uso."
+  # validates_uniqueness_of :matricula, :message=>" Já se encontra em uso."
 end

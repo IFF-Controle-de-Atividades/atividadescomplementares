@@ -23,16 +23,16 @@
                     <td cellspacing=2>
                         <center>
                             <a href = "<%= edit_atividade_path(atividade) %>" alt="Anexar Comprovante">
-                                <%= image_tag atividade.comprovante.url(:tamanho_pequeno) %>
+                                <%= image_tag atividade.comprovante.url %>
                             </a>
                         </center>
                     </td>
-                    <% if atividade.comprovante_file_name.nil? %>
+                    <% if atividade.comprovante.nil? %>
                         <center><TD id="td1">Nao há comprovante</TD></center>
                     <% else %>
                         <td id="td1"><center>
                             <a href = "<%= atividade.comprovante %>" alt="Anexar Comprovante">              
-                                <%= image_tag("samples/iconpdf.png", :width=>"60",:height=>"50", :alt=>"Ver Comprovante") %>
+                                <%= image_tag("fallback/pdf-icon.png", :width=>"60",:height=>"50", :alt=>"Ver Comprovante") %>
                             </center></a>
                         </td>
                     <% end %>

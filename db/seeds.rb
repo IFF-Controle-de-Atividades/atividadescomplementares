@@ -28,4 +28,4 @@ Modalidade.create(descricao: "Certificação Profissional na Área do Curso")
 print "<< Inserindo Administrador no Sistema >>"
 Avaliador.create(nome: 'Administrador', sexo: 'Masculino', matricula: 'Altere sua matricula', titulacao: 'Alterar sua titulação', email: 'admin@admin.com', password: 'admin', admin: 1)
 
-print "Dados Inseridos\n\n"
+print "\n\nDados Inseridos\n\n"

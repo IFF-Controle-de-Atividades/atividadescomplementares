@@ -8,13 +8,13 @@
 <FIELDSET><LEGEND><H1><label> Editar Imagem do Perfil </label></H1></LEGEND>
 <DIV id="localization">
 
-<%= form_for(@aluno, :url=>{:action=>'load_imagem'}, :html => { :multipart => true }) do |l| %>
+<%= form_for(@aluno, :url=>{:action=>'load_imagem'}) do |l| %>
      <%= render "shared/object_error_messages", :object => @aluno %> 
     <div class="field">
        <b><%= l.label "Imagem:" %></b>
        <i id="blue" class="small">(Deixe em branco se não quiser alterar a sua imagem!)</i>
        <br>
-       <%= l.file_field :photo %><BR /></b>
+       <%= l.file_field :foto %><BR /></b>
     </div>
   
     <br>

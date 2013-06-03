@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImagemUploader < CarrierWave::Uploader::Base
+class ComprovanteUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
   include Sprockets::Helpers::IsolatedHelper
@@ -8,16 +8,15 @@ class ImagemUploader < CarrierWave::Uploader::Base
   storage :file
 
   def default_url
-    asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+    asset_path("fallback/" + [version_name, "pdf.png"].compact.join('_'))
   end
 
-  process resize_to_fit: [100, 200]
   version :thumb do
      process :resize_to_fill => [90, 90]
   end
 
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w( pdf )
   end
 
   def store_dir
