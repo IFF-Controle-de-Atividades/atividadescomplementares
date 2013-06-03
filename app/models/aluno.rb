@@ -70,16 +70,27 @@ class Aluno
   validates_uniqueness_of :matricula, :message=>" - Já se encontra em uso."
   validates_uniqueness_of :email, :message=>" Já se encontra em uso."
 
-  private
-    def primeira_letra_do_nome_deve_deve_ser_maiuscula
-      errors.add("nome", "A 1º letra deve ser Maiuscula") unless nome=~ /[A-Z].*/
-    end
+  def contar_horas_enviadas(aluno_atual)
+    aluno = aluno_atual  
+    total_horas = Atividade.where(:aluno_id => aluno)
+    total_horas = total_horas.sum(:carga_horaria)
+    if total_horas >= 360 
+         return "Horas cumpridas = #{$total_horas} - Você possui horas suficientes!"
+     else 
+         return "Horas cumpridas= #{$total_horas} - Você não possui horas o suficiente! "
+     end    
+  end
 
-  private
-    def primeira_letra_do_endereco_deve_ser_maiuscula
-      errors.add("endereco", "A 1º letra deve ser Maiuscula") unless endereco=~ /[A-Z].*/        
+  def contar_horas_aceitas(aluno_atual)
+    aluno = aluno_atual
+    total_horas = Atividade.where(:aluno_id => aluno)
+    total_horas = total_horas.sum(:carga_horaria_aceita)
+    if total_horas >= 360
+       return "Total de Horas = #{total_horas} - Você possui horas suficientes!"
+    else
+       return "Total de Horas= #{total_horas} - Você não possui horas o suficiente! "
     end
-
+  end
   
   scope :buscar_pelo_nome, lambda{|nome| where(:nome => nome)} 
 end

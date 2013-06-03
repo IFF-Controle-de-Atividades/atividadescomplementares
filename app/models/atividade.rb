@@ -21,6 +21,7 @@ class Atividade
   field :avaliada, type: Boolean
   field :carga_horaria_aceita, type: Integer
   field :justificativa, type: String
-  
+
+  attr_accessible :comprovante
   mount_uploader :comprovante, ComprovanteUploader
 end

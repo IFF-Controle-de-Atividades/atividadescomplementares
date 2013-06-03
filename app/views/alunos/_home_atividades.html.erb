@@ -19,11 +19,15 @@
 		<% for atividade in atividades %>
 		<tr id="home">
                     <td id="td1"><center><%= atividade.nome %></center></td>
-                    <td id="td1"><center><%= atividade.carga_horaria_aceita %></center></td>
+                    <% if atividade.carga_horaria_aceita.nil? %>
+                        <td id="td1"><center>Esta atividade ainda não foi avaliada</center></td>
+                    <% else %>
+                        <td id="td1"><center><%= atividade.carga_horaria_aceita %></center></td>
+                    <% end %>
                     <td cellspacing=2>
                         <center>
                             <a href = "<%= edit_atividade_path(atividade) %>" alt="Anexar Comprovante">
-                                <%= image_tag atividade.comprovante.url %>
+                               <%= image_tag("fallback/pdf.png", :width=>"60",:height=>"50", :alt=>"Anexar Comprovante") %>
                             </a>
                         </center>
                     </td>
