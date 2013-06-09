@@ -52,7 +52,8 @@ class Avaliador
   attr_accessible :nome, :matricula , :sexo,
                   :titulacao, :email, :password, 
                   :password_confirmation, :remember_me, 
-                  :admin, :ativo
+                  :admin, :ativo,:foto
+  mount_uploader :foto, ImagemUploader
 
   has_many :atividades
 

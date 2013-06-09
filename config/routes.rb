@@ -1,9 +1,16 @@
 #encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
-  resources :avaliadores
-  
+  resources :pdf_reports, 
+            :only => 
+              [
+                :pdf_reports, 
+                :avaliadores_report,
+                :alunos_report,
+                :atividades_report,
+                :atividades_do_aluno_report
+              ]
   resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:imagem]
-                     
+  resources :avaliadores                   
   resources :atividades
   resources :avaliacoes, 
             :only =>[
@@ -63,13 +70,12 @@ Atividadescomplementares::Application.routes.draw do
   end
 
   match "/atividades/:id/delete", :controller => "atividades", :action => "destroy", :as => :excluir_atividade
-  resources :pdf_reports, :only => [:pdf_reports, :avaliadores_report, :alunos_report, :atividades_report, :relatorioAtividades_report]
 
   get "/pdf_reports/menu"
   get "/pdf_reports/avaliadores_report" => "pdf_reports#avaliadores_report", :format => :pdf
   get "/pdf_reports/alunos_report" => "pdf_reports#alunos_report", :format => :pdf
   get "/pdf_reports/atividades_report" => "pdf_reports#atividades_report", :format => :pdf
-  get "/pdf_reports/total_de_atividades" => "pdf_reports#relatorioAtividades_report",  :format => :pdf, :as=>:pdf_reports_relatorioAtividades
+  get "/pdf_reports/minhas-atividades" => "pdf_reports#relatorioAtividades_report",  :format => :pdf, :as=>:atividadesPDF
 
   authenticated :aluno do
     root :to => "alunos#home"
@@ -136,5 +142,5 @@ Atividadescomplementares::Application.routes.draw do
 
   # This is a legacy wild controller route that"s not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ":controller(/:action(/:id))(.:format)"
+  #match ":controller(/:action(/:id))(.:format)"
 end

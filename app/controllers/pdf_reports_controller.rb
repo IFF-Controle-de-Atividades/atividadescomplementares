@@ -41,21 +41,22 @@ class PdfReportsController < ApplicationController
             formato.pdf do
                #render :layout => false
                pdf = AtividadePdf.new(@atividades, view_context)
-               send_data pdf.render, filename: "Listagem_Atividades.pdf",
+               send_data pdf.render, filename: "Atividades.pdf",
                type: "application/pdf", disposition: "inline"
             end
         end
     end
 
     def relatorioAtividades_report
-        respond_to do |format|
-            format.html
-            format.pdf do 
-                @aluno_atividades = Atividade.where(:aluno_id => current_aluno)
-                pdf = Atividade_AlunoPdf.new(@aluno_atividades)
-                send_data pdf.render, filename: "Relatorio_de_Atividades.pdf",
-                type: "application/pdf", disposition: "inline"
+        @atividades = Atividade.where(:aluno_id => current_aluno)
+        respond_to do |formato|
+            formato.html
+            formato.pdf do
+               #render :layout => false
+               pdf = AtividadesDoAlunoPdf.new(@atividades)
+               send_data pdf.render, filename: "Atividades.pdf",
+               type: "application/pdf", disposition: "inline"
             end
-         end
+        end
     end 
 end
