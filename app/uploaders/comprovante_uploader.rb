@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class ComprovanteUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
@@ -12,13 +11,8 @@ class ComprovanteUploader < CarrierWave::Uploader::Base
     asset_path("fallback/" + [version_name, "pdf.png"].compact.join('_'))
   end
 
-  # process resize_to_fit: [50, 50]
-  # version :thumb do
-  #    process :resize_to_fill => [90, 90]
-  # end
-
   def extension_white_list
-    %w( png jpeg jpg pdf )
+    %w(doc docx pdf odt)
   end
 
   def store_dir

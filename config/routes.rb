@@ -1,6 +1,5 @@
 #encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
-  match "/upload/grid/*path" => "gridfs#serve"
   resources :avaliadores
   
   resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:imagem]
@@ -81,7 +80,7 @@ Atividadescomplementares::Application.routes.draw do
   end
 
   root :to => "home#index"
-
+  match "/upload/grid/*path" => "gridfs#serve"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -137,5 +136,5 @@ Atividadescomplementares::Application.routes.draw do
 
   # This is a legacy wild controller route that"s not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  #match ":controller(/:action(/:id))(.:format)"
+  match ":controller(/:action(/:id))(.:format)"
 end
