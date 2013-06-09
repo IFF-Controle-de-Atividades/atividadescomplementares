@@ -12,7 +12,7 @@
                             <span><%= link_to 'Atividades',listadeatividades_path%></span>
                         </li>
                         <li class='has-sub '>
-                            <span><%= link_to 'Relatório de Atividades', minhas_atividades_path(@atividades, format: "pdf")  %></span>
+                            <span><%= link_to 'Minhas Atividades', minhas_atividades_path(@atividades, :format=> 'pdf') %></span>
                         </li>
                 </ul>
              </li>
