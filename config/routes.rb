@@ -1,14 +1,13 @@
 #encoding:utf-8
 Atividadescomplementares::Application.routes.draw do
-  resources :pdf_reports, 
-            :only => 
-              [
-                :pdf_reports, 
-                :avaliadores_report,
-                :alunos_report,
-                :atividades_report,
-                :atividades_do_aluno_report
-              ]
+  get "pdfs/aluno_atividades_pdf" => "pdfs#aluno_atividades_pdf", :format=> :pdf, :as=>:minhas_atividades
+
+  get "pdfs/avaliadores_pdf" => "pdfs#avaliadores_pdf", :format=> :pdf, :as=>:avaliadores_pdf
+
+  get "pdfs/atividades_pdf" => "pdfs#atividades_pdf", :format=> :pdf, :as=>:atividades_pdf
+
+  get "pdfs/alunos_pdf" => "pdfs#alunos_pdf", :format=> :pdf, :as=>:alunos_pdf
+
   resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:imagem]
   resources :avaliadores                   
   resources :atividades
@@ -71,11 +70,6 @@ Atividadescomplementares::Application.routes.draw do
 
   match "/atividades/:id/delete", :controller => "atividades", :action => "destroy", :as => :excluir_atividade
 
-  get "/pdf_reports/menu"
-  get "/pdf_reports/avaliadores_report" => "pdf_reports#avaliadores_report", :format => :pdf
-  get "/pdf_reports/alunos_report" => "pdf_reports#alunos_report", :format => :pdf
-  get "/pdf_reports/atividades_report" => "pdf_reports#atividades_report", :format => :pdf
-  get "/pdf_reports/minhas-atividades" => "pdf_reports#relatorioAtividades_report",  :format => :pdf, :as=>:atividadesPDF
 
   authenticated :aluno do
     root :to => "alunos#home"

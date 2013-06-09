@@ -8,6 +8,10 @@ class AvaliadoresController < ApplicationController
     def index
     end
 
+    def menu_pdf_report
+        #TODO request code change here
+    end
+
     def new
         @avaliador = Avaliador.new
         respond_with @avaliador
