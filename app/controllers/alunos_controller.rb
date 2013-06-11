@@ -1,4 +1,3 @@
-require 'prawn/layout'
 #encoding:utf-8
 class AlunosController < ApplicationController
     private 
@@ -35,16 +34,5 @@ class AlunosController < ApplicationController
     def atividades
 	end
 
-    def minhas_atividades
-        @atividades = Atividade.all
-        # respond_to do |format|
-        #   format.html
-        #   format.pdf do
-        #     pdf = MinhasAtividades.new(@atividades)
-        #     send_data pdf.render, filename: "Minhas_Atividades.pdf",
-        #     type: "application/pdf", disposition: "inline"
-
-        #   end
-        # end
-    end
+    
 end

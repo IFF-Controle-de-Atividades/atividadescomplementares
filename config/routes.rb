@@ -2,6 +2,7 @@
 Atividadescomplementares::Application.routes.draw do
 
   resources :widgets, only: [:index]
+  resources :pdf_reports, only: [:atividadealuno]
 
 
   resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:minhas_atividades]
@@ -66,7 +67,7 @@ Atividadescomplementares::Application.routes.draw do
 
   match "/atividades/:id/delete", :controller => "atividades", :action => "destroy", :as => :excluir_atividade
 
-  get "/minhas-atividades" => "alunos#minhas_atividades", :format=> :pdf, :as=>:minhas_atividades
+  get "/minhas-atividades" => "pdf_reports#atividadealuno", :format=> :pdf, :as=>:alunoatividades
 
   authenticated :aluno do
     root :to => "alunos#home"

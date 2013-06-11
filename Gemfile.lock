@@ -206,6 +206,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -327,6 +329,8 @@ DEPENDENCIES
   mongoid-rspec (>= 1.7.0)
   mongoid_auto_increment_id (>= 0.6.0)
   prawn
+  pry
+  pry-nav
   quiet_assets (>= 1.0.2)
   rack-raw-upload (= 1.1.0)
   rails (= 3.2.11)

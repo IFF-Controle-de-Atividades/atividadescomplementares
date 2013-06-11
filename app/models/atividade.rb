@@ -4,7 +4,6 @@ class Atividade
   include Mongoid::MultiParameterAttributes 
   include Mongoid::Timestamps
   
-  
   belongs_to :aluno
   has_many :modalidades
   belongs_to :modalidade

@@ -30,6 +30,8 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'pry'
+  gem 'pry-nav'
   gem "rspec"
   gem "rspec-rails", ">= 2.12.2"
   gem "rb-fsevent"

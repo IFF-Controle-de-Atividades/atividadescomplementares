@@ -1,4 +1,5 @@
 # app/controllers/widgets_controller.rb
+#https://github.com/prawnpdf/prawn/wiki/Using-Prawn-in-Rails-3
 class WidgetsController < ApplicationController
   class TestDocument < Prawn::Document
     def to_pdf
