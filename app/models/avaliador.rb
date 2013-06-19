@@ -13,6 +13,8 @@ class Avaliador
   field :sexo, type: String
   field :matricula, type: String
   field :titulacao, type: String
+  field :admin,type: Boolean, :default=>0
+  field :ativo, type: Boolean, :default=>0
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

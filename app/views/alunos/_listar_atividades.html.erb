@@ -1,6 +1,3 @@
-<br />
-<font face="NewStencil size="5em" color= "#067120" >
-Lista de atividades de <%= current_aluno.nome %></font><br /><br />
 <section>
 <div id="MyAtividades"><table id="home" summary="Atividades"><caption>Atividades</caption>
     <thead >
@@ -22,23 +19,23 @@ Lista de atividades de <%= current_aluno.nome %></font><br /><br />
     <tbody id="home">
         <% for atividade in atividades %>
             <tr id="home">
-            <th><center><%= atividade.nome %></center></th>
-            <td><center><%= atividade.modalidade_nome %></center></td>
-            <td><center><%= atividade.inicio %></center></td>
-            <td><center><%= atividade.termino %></center></td>
-            <td><center><%= atividade.carga_horaria %></center></td>
+            <th><label class="large"><center><%= atividade.nome %></center></th></label>
+            <td><label class="large"><center><%= atividade.modalidade_nome %></center></td></label>
+            <td><label class="large"><center><%= atividade.inicio %></center></td></label>
+            <td><label class="large"><center><%= atividade.termino %></center></td></label>
+            <td><label class="large"><center><%= atividade.carga_horaria %></center></td></label>
             <% if atividade.carga_horaria_aceita.nil? %>
-                <td><center>Esta atividade ainda não foi avaliada</center></td>
+                <td><label class="large"><center>Esta atividade ainda não foi avaliada</center></td></label>
             <% else %>
-                <td><center><%= atividade.carga_horaria_aceita %></center></td>
+                <td><label class="large"><center><%= atividade.carga_horaria_aceita %></center></td></label>
             <% end %>
             <td><center>
                 <a href = "<%= edit_atividade_path(atividade) %>" alt="Anexar Comprovante">
                     <%= image_tag("fallback/pdf.png", :width=>"60",:height=>"50", :alt=>"Anexar Comprovante") %>
                 </a></center>
             </td>
-            <% if atividade.comprovante.nil? %>
-                    <center><TD><label class="large">Sem Comprovante!</label></TD></center>
+            <% if atividade.comprovante.path.nil? %>
+                    <label class="large"><center><TD><label class="large">Sem Comprovante!</label></TD></center></label>
                 <% else %>
                     <td><center>
                         <a href = "<%= atividade.comprovante %>" alt="Anexar Comprovante">

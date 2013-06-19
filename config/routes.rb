@@ -2,11 +2,11 @@
 Atividadescomplementares::Application.routes.draw do
 
   resources :widgets, only: [:index]
-  resources :pdf_reports, only: [:atividadealuno]
+  resources :pdf_reports, only: [:atividadealuno, :alunos_pdf, :avaliadores_pdf, :total_atividades]
 
 
   resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:minhas_atividades]
-  resources :avaliadores                   
+  resources :avaliadores, :only => [:index, :new,:create,:editar_status,:atualizar_status,:localizar_atividade,:total_alunos,:total_avaliadores,:total_atividades,:selecionar_imagem,:load_imagem,:remover_imagem,:exibir_avaliacoes,:relatorios_pdf]
   resources :atividades
   resources :avaliacoes, 
             :only =>[
@@ -68,6 +68,9 @@ Atividadescomplementares::Application.routes.draw do
   match "/atividades/:id/delete", :controller => "atividades", :action => "destroy", :as => :excluir_atividade
 
   get "/minhas-atividades" => "pdf_reports#atividadealuno", :format=> :pdf, :as=>:alunoatividades
+  get "/total-avaliadores" => "pdf_reports#avaliadores_pdf", :format => :pdf, :as=> :avaliadores_pdf
+  get "/total-alunos" => "pdf_reports#alunos_pdf", :format => :pdf, :as=> :alunos_pdf
+  get "/total-atividades" => "pdf_reports#total_atividades", :format => :pdf, :as=> :total_atividades
 
   authenticated :aluno do
     root :to => "alunos#home"

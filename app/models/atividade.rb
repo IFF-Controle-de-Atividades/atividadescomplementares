@@ -19,7 +19,7 @@ class Atividade
   field :designada_em, :type => Date
   field :avaliador_id, :type => Integer
   field :avaliada, :type => Boolean
-  field :carga_horaria_aceita, :type => Integer
+  field :carga_horaria_aceita, :type => Integer, :default=>0
   field :justificativa, :type => String
   field :comprovante
 

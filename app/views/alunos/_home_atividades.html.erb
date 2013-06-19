@@ -31,8 +31,8 @@
                             </a>
                         </center>
                     </td>
-                    <% if atividade.comprovante.nil? %>
-                        <center><TD id="td1">Nao há comprovante</TD></center>
+                    <% if atividade.comprovante.path.nil? %>
+                        <TD id="td1"><%="Nao há comprovante"%></TD>
                     <% else %>
                         <td id="td1"><center>
                             <a href = "<%= atividade.comprovante %>" alt="Anexar Comprovante">              
@@ -41,8 +41,8 @@
                         </td>
                     <% end %>
                     <td id="td1">
-			<%= link_to 'Excluir', excluir_atividade_path(atividade), 
-				:method => :delete, :confirm => 'Tem Certeza?'  %>
+                        <%= link_to 'Excluir', excluir_atividade_path(atividade), 
+                        :method => :delete, :confirm => 'Tem Certeza?'  %>
                     </td>
 		</tr>
 		<%- end -%>
