@@ -53,7 +53,7 @@ Atividadescomplementares::Application.routes.draw do
      get "/adim/TOTAL_AVALIADORES" => "avaliadores#total_avaliadores", :as => :total_avaliadores
      get "/adim/TOTAL_ALUNOS" => "avaliadores#total_alunos", :as => :total_alunos
      get "/lista-de-avaliacoes/:id" => "avaliadores#exibir_avaliacoes", :as => :lista_de_avaliacoes
-     get "/TOTAL_ATIVIDADES" => "avaliadores#total_alunos", :as => :total_atividades
+     get "/TOTAL_ATIVIDADES" => "avaliadores#total_alunos", :as => :aluno_atividades
      get "/TOTAL_AVALIACOES" => "avaliadores#listar_avaliacoes", :as => :total_avaliacoes
      get "/admin/geracao_de_relatorio/pdf" => "avaliadores#relatorios_pdf", :as => :admin_relatorio_em_pdf
      match "/localizar-atividades", :controller => "avaliadores", :action=>"localizar_atividade", :as=>:localizar_atividades

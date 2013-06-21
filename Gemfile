@@ -12,8 +12,8 @@ gem 'json'
 gem 'bson_ext'
 gem 'rack-raw-upload', '1.1.0'
 gem 'carrierwave'
-gem 'mini_magick', :git => 'git://github.com/probablycorey/mini_magick.git'
-gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git"
+gem 'mini_magick'
+gem "carrierwave-mongoid"
 
 gem "devise", ">= 2.2.3"
 gem 'will_paginate_mongoid'

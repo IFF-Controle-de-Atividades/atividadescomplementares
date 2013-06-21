@@ -29,12 +29,12 @@ class AvaliacoesController < ApplicationController
     def list
         @aluno = Aluno.find(params[:id])
         @avaliadores= Avaliador.all
-        @atividade_aluno = Atividade.where(:aluno_id => @aluno ).paginate(:page => params[:page], :per_page=>4)
+        @atividade_aluno = Atividade.where(:aluno_id => @aluno.id ).paginate(:page => params[:page], :per_page=>4)
     end
 
     def x_list
         @aluno = Aluno.find(params[:id])
-        @atividade_aluno = Atividade.where(:aluno_id => @aluno ).paginate(:page => params[:page], :per_page=>4)
+        @atividade_aluno = Atividade.where(:aluno_id => @aluno.id ).paginate(:page => params[:page], :per_page=>4)
     end
 
 
