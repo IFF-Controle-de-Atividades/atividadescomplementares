@@ -5,17 +5,17 @@ Atividadescomplementares::Application.routes.draw do
   resources :pdf_reports, only: [:atividadealuno, :alunos_pdf, :avaliadores_pdf, :total_atividades]
 
 
-  resources :alunos, :only => [:home, :atividades, :selecionar_imagem, :load_imagem, :remover_imagem,:minhas_atividades]
+  resources :alunos,:only => [:home, :profile_image]
   resources :avaliadores, :only => [:index, :new,:create,:editar_status,:atualizar_status,:localizar_atividade,:total_alunos,:total_avaliadores,:total_atividades,:selecionar_imagem,:load_imagem,:remover_imagem,:exibir_avaliacoes,:relatorios_pdf]
   resources :atividades
-  resources :avaliacoes, 
+  resources :avaliacoes,
             :only =>[
-                     :listar_atividades_complementares, 
+                     :listar_atividades_complementares,
                      :avaliar_atividade,
-                     :avaliar, 
-                     :listar_avaliacoes, 
+                     :avaliar,
+                     :listar_avaliacoes,
                      :exibir_avaliacoes
-                    ], 
+                    ],
             :collection => { :designar => :put }
 
   devise_for :alunos
@@ -39,9 +39,6 @@ Atividadescomplementares::Application.routes.draw do
      get "/aluno/sign_out" => "devise/sessions#destroy", :as => :aluno_session_out
      get "/aluno/home/" => "alunos#home", :as => :aluno_home
      get "/listadeatividades" => "alunos#atividades", :as => :listadeatividades
-     match "/selecionar_imagem/:id/selecionar_imagem",:controller => "alunos",:action=>"selecionar_imagem", :as => :selecionar_imagem
-     match "/selecionar_imagem/:id/salvar_imagem",:controller => "alunos", :action=>"load_imagem",:as => :salvar_imagem
-     match "/selecionar_imagem/:id/remover_imagem",:controller => "alunos",:action=>"remover_imagem", :as => :remover_imagem
   end
 
   as :avaliador do

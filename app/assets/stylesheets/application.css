@@ -49,8 +49,8 @@
   margin-top: 20px;
 }
 
-i#blue{color: #4682B4; font-size:13px;}
-i#red{ font-size:0.6em; color: red;}
+i#blue{color: #4682B4;}
+i#red{ color: red;}
 #my_id{color:white;}
 
 strong#account-name a { color: #006699; font-weight: bold !important; }
