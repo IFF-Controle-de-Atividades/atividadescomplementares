@@ -9,14 +9,14 @@
                             <span><%= link_to 'Nova Atividade' , new_atividade_path%></span>
                         </li>
                         <li class='has-sub '>
-                            <span><%= link_to 'Atividades',listadeatividades_path%></span>
-                        </li>
-                        <li class='has-sub '>
-                            <span><%= link_to 'Minhas Atividades', alunoatividades_path %></span>
+                            <span><%= link_to 'Lista de atividades',listadeatividades_path%></span>
                         </li>
                 </ul>
-             </li>
-             <li class='has-sub '>
+            </li>
+            <li class='has-sub '>
+                <span><%= link_to 'Relatórios de atividades', alunoatividades_path %></span>
+            </li>
+            <li class='has-sub '>
                 <span><%= link_to 'Editar meus Dados', edit_aluno_registration_path %></span>
             </li>
         </ul>

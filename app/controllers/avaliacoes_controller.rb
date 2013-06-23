@@ -7,10 +7,15 @@ class AvaliacoesController < ApplicationController
    def listar_atividades_complementares
         if not current_avaliador.admin
             flash[:alert] = "Acesso restrito"
-            render :action => "index"
+            redirect_to avaliador_home_path  
         else
             @atividades = Atividade.paginate(:page => params[:page], :per_page=>4)
             @avaliadores= Avaliador.all
+        end
+
+        if Atividade.empty?
+            flash[:alert] = "Não foram encontradas Atividades."
+            redirect_to avaliador_home_path
         end
     end
 
@@ -70,7 +75,7 @@ class AvaliacoesController < ApplicationController
             @avaliadores = Avaliador.where(:admin => 0).paginate(:page => params[:page],
 :per_page=>4)
         else
-            render :action => "index"
+            redirect_to avaliador_home_path
             flash[:alert] = "Acesso restrito"
         end
     end
@@ -89,7 +94,7 @@ params[:page], :per_page=>4)
                 flash[:alert] = "#{@avaliador.nome} Não fez nenhuma avaliação!"
             end
         else
-            render :action => "index"
+            redirect_to avaliador_home_path
         end
     end
    
