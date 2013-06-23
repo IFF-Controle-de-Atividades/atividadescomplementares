@@ -51,18 +51,6 @@
     </div>
 
     <div class="field">
-        <i id="blue" class="small">(Deixe em branco se não quiser alterar sua senha!)</i><br />
-        <b><%= l.label "Senha:" %> </b>&nbsp&nbsp
-            <%= l.password_field :password, :size=>'29' %>
-    </div>
-
-    <div class="field">
-        <i id="blue" class="small">(Por favor confirme a sua senha.)</i><br />
-        <b><%= l.label "Repita a senha:" %>&nbsp</b>
-        <%= l.password_field :password_confirmation, :size=>"20" %>
-    </div>
-
-    <div class="field">
         <i id="red" class="small">(Informe a sua senha atual! )</i><br />
         <b><%= l.label "Senha Atual:" %>&nbsp&nbsp<i id="red">*</i>&nbsp&nbsp</b>
         <%= l.password_field :current_password, :size=>"21" %>
