@@ -59,5 +59,3 @@ group :development do
   gem "better_errors", ">= 0.7.2"
   gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx] 
 end
-
-# gem 'carrierwave', :git => "git://github.com/jnicklas/carrierwave.git"
