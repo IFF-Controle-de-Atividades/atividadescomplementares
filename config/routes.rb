@@ -5,7 +5,7 @@ Atividadescomplementares::Application.routes.draw do
   resources :pdf_reports, only: [:atividadealuno, :alunos_pdf, :avaliadores_pdf, :total_atividades]
 
 
-  resources :alunos,:only => [:home, :profile_image, :change_image, :remove_image]
+  resources :alunos,:only => [:home, :profile_image, :change_image, :remove_image, :password,:change_password]
   
   resources :avaliadores, :only => [:index, :new,:create,:editar_status,:atualizar_status,:localizar_atividade,:total_alunos,:total_avaliadores,:total_atividades,:selecionar_imagem,:load_imagem,:remover_imagem,:exibir_avaliacoes,:relatorios_pdf]
   
@@ -21,7 +21,7 @@ Atividadescomplementares::Application.routes.draw do
                     ],
             :collection => { :designar => :put }
 
-  devise_for :alunos
+  devise_for :alunos, :skip => [:sessions]
   
   devise_for :avaliadores, :skip => [:sessions]
 
@@ -45,6 +45,7 @@ Atividadescomplementares::Application.routes.draw do
      get "/listadeatividades" => "alunos#atividades", :as => :listadeatividades
      get "/imagemdoperfil"  => "alunos#profile_image", :as => :profile_image
      get "/imagemdoperfilpadrao"=> "alunos#remove_image", :as => :default_image
+     get "/alterarsenha/:id"=> "alunos#password", :as => :password
   end
 
   as :avaliador do

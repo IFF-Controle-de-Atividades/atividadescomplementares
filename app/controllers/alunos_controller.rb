@@ -26,5 +26,17 @@ class AlunosController < ApplicationController
             flash[:notice] = "Sua imagem foi removida com sucesso"
             redirect_to aluno_home_path
         end
-    end  
+    end
+
+    def password
+        @aluno = current_aluno
+    end
+
+    def change_password
+       @aluno = current_aluno
+       if @aluno.update_attributes(params[:password])
+            flash[:notice] = "Sua senha acaba de ser alterada."
+            redirect_to aluno_home_path
+        end 
+    end
 end
