@@ -39,6 +39,7 @@ thr.join
 sleep(5)
 
 print "\n\n<< Inserindo Administrador padrão do Sistema >>\n\n"
+print "<< Os dados do administrador podem ser alterados posteriormente >>"
 
 threads << Thread.new {inserindo_administrador}
 sleep(5)

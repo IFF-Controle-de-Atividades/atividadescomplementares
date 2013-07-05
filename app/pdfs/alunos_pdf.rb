@@ -12,7 +12,7 @@ class AlunosPdf < PDF_GENERATOR
         nome_documento
         move_down 30
         if @report.empty?
-            draw_text "Não há alunos cadastradas", :at => [230,255], :size=> 20
+            draw_text "Não foram encontrados alunos", :at => [230,255], :size=> 20
             draw_text "_" * 46, :at => [220,255]
             draw_text "Por-favor aguarde os alunos", :at => [236,225], :size=> 20
             draw_text "_" * 46, :at => [220,225]

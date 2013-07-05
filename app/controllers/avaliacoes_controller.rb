@@ -20,15 +20,14 @@ class AvaliacoesController < ApplicationController
     end
 
     def designar
-        Atividade.where(:id => params[:atividades_ids]).update_all(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
-        @atividade = Atividade.where(:id => :atividades_ids)
-        #@avaliador = Avaliador.where(:id => :avaliador_id)
-#        @avaliador = Avaliador.find_by_sql("SELECT email FROM avaliadores WHERE id= #{params[:avaliador_id]};")
-       
-#        AtividadeMailer.designar_atividade(@atividade, @avaliador).deliver
-       
-        flash[:notice] = "Um avaliador foi designado"
-        redirect_to :action=> "listar_atividades_complementares"
+        @atividade = Atividade.where(:id => params[:atividades_ids]).update_all(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
+        #@atividade = Atividade.where(:id => :atividades_ids)
+        if @atividade.update_attributes(:id => :atividades_ids)
+            flash[:notice] = "Um avaliador foi designado"
+            redirect_to :action=> "listar_atividades_complementares"
+        else
+            flash[:error] = "Um avaliador não pode designado"
+        end
     end
 
     def list

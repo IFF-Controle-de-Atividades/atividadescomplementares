@@ -29,6 +29,19 @@
       <b><%= l.label "Matricula:" %></b>&nbsp<i id="red">*&nbsp</i>
         <%= l.text_field :matricula, :placeholder => "000000000" %>
     </div>
+
+    <div class="field">
+        <%= l.label "Administrador:" %>&nbsp<i id="red">*&nbsp</i>
+        <%= l.radio_button :admin, 1 %><label>Sim</label>
+        <%= l.radio_button :admin, 0 %><label>Não</label>
+    </div>
+
+    <div class="field">
+        <%= l.label "Status: " %>&nbsp<i id="red">*&nbsp</i>
+        <%= l.radio_button :ativo, 1 %><label>Ativo</label>
+        <%= l.radio_button :ativo, 0 %><label>Não Ativo</label>
+    </div>
+
     <div class="field">
         <b><%= l.label "E-mail:" %></b>&nbsp<i id="red">*&nbsp</i>
         <%= l.email_field :email, :placeholder => "example@example.com", :size=>"33" %>
@@ -39,11 +52,6 @@
         <%= l.password_field :password, :placeholder => "Uma senha por favor", :size=>"33" %>
     </div>
 
-    <div class="field">
-        <i id="red">(Precisamos que confirme a senha do avaliador )</b></i><br />
-        <b><%= l.label "Repita a senha:" %>&nbsp<i id="red">*&nbsp</i>
-        <%= l.password_field :password_confirmation, :size=>"24" %>
-    </div>
     </FIELDSET>
     <div class="botao_left">
         <span class="luz"><%= l.submit "Enviar", :class=>"botao", :id=>'id_botao' %></span>

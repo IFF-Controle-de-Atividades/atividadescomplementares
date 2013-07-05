@@ -66,7 +66,6 @@ Atividadescomplementares::Application.routes.draw do
      match "/avaliador/:id/selecionar_imagem",:controller => "avaliadores", :action=>"selecionar_imagem", :as => :selecionar_imagem_avaliador
      match "/avaliador/:id/salvar_imagem",:controller => "avaliadores", :action=>"load_imagem", :as => :salvar_imagem_avaliador
      match "/avaliador/:id/remover_imagem",:controller => "avaliadores", :action=>"remover_imagem", :as => :remover_imagem_avaliador
-     match "/designar-avaliador/atividade/:id/avaliar",:controller => "avaliadores", :action => "avaliar", :as => :designar_atividade
   end
 
   match "/atividades/:id/delete", :controller => "atividades", :action => "destroy", :as => :excluir_atividade
