@@ -1,8 +1,22 @@
-<% if @alunos.empty? %>
-	<br /><br />
-	<div class="infobar"><b>Nenhum aluno foi encontrado.<b></div>
-<% else %>
-	<div>
-		<%= render :partial=>"alunos", :locals=>{:alunos=>@alunos}%>
-	</div>
-<% end %>
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<meta charset="UTF-8">
+    <% if @alunos.empty? %>
+		<head>
+	        <script type="text/javascript">
+				<!-- 
+				function Redirect(){
+				    window.location.href = "<%= avaliador_home_path %>" 
+				}
+				document.write("You will be redirected to main page in 10 sec.")
+				setTimeout('Redirect()', 10000)
+				-->
+			</script>
+		</head>
+		<div>
+			Se não foi redirecionado, siga por aqui <a href='<%= avaliador_home_path %>'>Home</a>
+		</div>
+	<% else %>
+		<div><%= render :partial=>"alunos", :locals=>{:alunos=>@alunos}%>	</div>
+	<% end %>
+</html>
