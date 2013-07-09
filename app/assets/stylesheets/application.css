@@ -300,6 +300,23 @@ a.stylish{color:#fff;}
     margin-right: 90px;
     margin-top: 20px;
 }
+
+.red_infobar{
+    width: 400px;
+    height: 20px;
+    padding: 1em;
+    vertical-align: top;
+    border-style: solid;
+    border-color:#2E8B57;
+    text-align: center;
+    font-size: 24px;
+    font-family: "Times New Roman";
+    background: #BEBEBE url(../images/Warning.png) no-repeat 5px center;
+    margin-left: 8px;
+    margin-right: 90px;
+    margin-top: 20px;
+}
+
 .infobar#home, .infobar2#home
 {
   width: 545px;
