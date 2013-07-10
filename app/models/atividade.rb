@@ -8,6 +8,7 @@ class Atividade
   has_many :modalidades
   belongs_to :modalidade
   belongs_to :avaliador
+  # has_and_belongs_to_many :avaliadores
 
   field :nome, :type => String
   field :modalidade_nome, :type => String
@@ -17,7 +18,7 @@ class Atividade
   field :carga_horaria, :type => Float
   field :aluno_id, :type => Integer
   field :designada_em, :type => Date
-  field :avaliador_id, :type => Integer
+  field :avaliador_id
   field :avaliada, :type => Boolean
   field :carga_horaria_aceita, :type => Integer, :default=>0
   field :justificativa, :type => String

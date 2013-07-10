@@ -1,7 +1,7 @@
 <BR />
 <CENTER>
 
-<%= form_tag designar_url,  :method => :put do  %>
+<%= form_for designar_path,:url=>{:controller=>'avaliacoes', :action=>'designar'}, :method => :put do  %>
         <table id="home" class='avaliacoes' summary="Atividades">
             <caption>Atividades complementares</caption>
 
@@ -22,12 +22,12 @@
              </thead>
 
              <tbody id="home">
-                <% @atividades.each do |atividade| %>
+                <% Atividade.each do |atividade| %>
             
                     <tr>
                     <td>
                         <center>
-                             <%= check_box_tag "atividades_ids[]", atividade.id %>
+                            <%= check_box_tag "atividades_ids[]", atividade.id, @atividades.include?(atividade.id) %>
                         </center>
                     </td>
 

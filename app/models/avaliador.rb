@@ -57,7 +57,9 @@ class Avaliador
                   :admin, :ativo,:foto
   mount_uploader :foto, ImagemUploader
 
-  has_many :atividades
+  # has_many :atividades
+
+  # has_and_belongs_to_many :atividades
 
   # validates_presence_of :nome, :message=>" - Deve ser preenchido."
   # validates_presence_of :sexo,:message => " - Deve ser preenchido."

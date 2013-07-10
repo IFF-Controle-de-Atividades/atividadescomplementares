@@ -19,15 +19,17 @@ class AvaliacoesController < ApplicationController
         end
     end
 
-    def designar
-        @atividade = Atividade.where(:id => params[:atividades_ids]).update_all(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
-        #@atividade = Atividade.where(:id => :atividades_ids)
-        if @atividade.update_attributes(:id => :atividades_ids)
-            flash[:notice] = "Um avaliador foi designado"
-            redirect_to :action=> "listar_atividades_complementares"
-        else
-            flash[:error] = "Um avaliador não pode designado"
-        end
+    def designar 
+        @atividades= Atividade.find(:id => params[:atividades_ids])
+        # @atividades= Atividade.update_attributes(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
+
+        # .where(params[:id][:atividades_ids] || []).update_all(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
+         if @atividades.update_attributes(:designada_em => Time.now, :avaliador_id => params[:avaliador_id])
+             flash[:notice] = "Um avaliador foi designado"
+             redirect_to :action=> "listar_atividades_complementares"
+         else
+             flash[:error] = "Um avaliador não pode designado"
+         end
     end
 
     def list

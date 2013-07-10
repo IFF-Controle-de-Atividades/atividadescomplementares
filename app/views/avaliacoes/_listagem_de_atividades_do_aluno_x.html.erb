@@ -32,7 +32,7 @@
                 <% if avaliador_signed_in? and current_avaliador.admin %>
                     <td>
                        <center>
-                          <%= check_box_tag "atividades_ids[]", atividade.id %>
+                          <%= check_box_tag "atividade[atividades_ids][]", atividade.id, @atividade.include?(atividade) %>
                        </center>
                    </td>
                 <% elsif avaliador_signed_in? and current_avaliador.admin == false %>
