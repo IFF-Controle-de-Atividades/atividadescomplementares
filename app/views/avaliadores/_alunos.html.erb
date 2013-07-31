@@ -11,7 +11,7 @@
                             <% if avaliador_signed_in? and current_avaliador.admin %>
                                 <%= link_to aluno.nome, listagem_de_atividades_do_aluno_x_path(aluno.id),:id =>aluno %>
                             <% elsif avaliador_signed_in? and current_avaliador.admin == false %>
-                                <%= link_to aluno.nome, "/atividades_de/#{aluno.nome}/#{aluno.id}",:id =>aluno %>
+                                <%= link_to aluno.nome, listagemdeatividadesdoaluno_path(aluno.nome, aluno.id),:id =>aluno %>
                             <%- end -%>
                         </p>
                     </center>

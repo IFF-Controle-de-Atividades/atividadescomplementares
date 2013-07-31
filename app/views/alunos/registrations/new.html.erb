@@ -1,10 +1,16 @@
+<%
+    cursos = ['BSI - Bacharelado - Sistemas de Informação', 'mais cursos a serem colocados']
+%>
+
 <script language= "JavaScript">
     function index()
     {
         location.href = "/aluno/sign_in";
     }
 </script>
+
 <BR />
+
 <strong><p><font size="9" color="red">*</font><label>&nbsp Campos Obrigatórios</strong></label></p>
 <FIELDSET><LEGEND><h2><label>Cadastrar-se</label></h2></LEGEND>
 <DIV id="localization">
@@ -45,8 +51,10 @@
     </div>
 
     <div class="field">
-       <%= l.label "Curso: ", :class=>"small" %><i id="red">*</i>
-       <%= l.text_field :curso, :size=>"53.5" %>
+       <%= l.label "Curso: ", :class=>"small" %>
+       <%= l.select :curso,
+            options_for_select(cursos)
+        %> 
     </div>
 
     <div class="field">

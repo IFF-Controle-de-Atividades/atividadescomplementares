@@ -36,6 +36,10 @@ class AvaliacoesController < ApplicationController
         @aluno = Aluno.find(params[:id])
         @avaliadores= Avaliador.all
         @atividade_aluno = Atividade.where(:aluno_id => @aluno.id ).paginate(:page => params[:page], :per_page=>4)
+        if @atividade_aluno.empty?
+            flash[:alert] = "#{@aluno.nome} não possui atividades."
+            redirect_to total_alunos_path
+        end
     end
 
     def x_list
