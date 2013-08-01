@@ -28,16 +28,21 @@ class AvaliadoresPdf < PDF_GENERATOR
     def nome_documento
         time = Time.now
         data_do_dia = time.strftime("%d/%m/%Y - %H:%M:%S")
-        text "Lista de Atividades & Avaliações", size: 25, style: :bold,horizontal_padding: 30
+        text "Avaliadores", size: 25, style: :bold,horizontal_padding: 30
         text "\n#{data_do_dia}", size: 15, style: :bold
     end
 
     def itens_tabela
-        [ ["Nome","Sexo", "Titulação","Matricula","Email de Contato","Administrador","Ativo ?","Atividades Avaliadas"] ] +
+        [ ["Nome", "Titulação","Matricula","E-mail","Ativo ","Administrador ","Atividades Avaliadas"] ] +
             @report.collect do |item|
-            [ item.nome, item.sexo, item.titulacao,
-              item.matricula, item.email, self.yes_or_no?(item.admin),
-              self.yes_or_no?(item.ativo),item.atividades.count
+            [ item.nome, item.titulacao,
+              item.matricula, item.email, self.yes_or_no?(item.ativo),
+              self.yes_or_no?(item.admin),
+                if item.atividades.empty?
+                    item = "Nenhuma"
+                else
+                    item.atividades.count
+                end
             ]
         end
     end

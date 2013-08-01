@@ -26,9 +26,10 @@ class PDF_GENERATOR < Prawn::Document
         move_down 10
         table itens do
             row(0).font_style = :bold
+            row(0).align = :center
             columns(1..7).align = :center
             self.row_colors = ["DDDDDD", "FFFFFF"]
-            self.width = 800
+            self.width = 805
             self.header = true
         end
         linha_de_assinatura
