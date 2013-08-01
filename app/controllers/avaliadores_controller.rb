@@ -22,10 +22,14 @@ class AvaliadoresController < ApplicationController
         @admin = current_avaliador
         if @avaliador.save
             AvaliadorMailer.novo_avaliador_ativo(@admin,@avaliador).deliver
-            flash[:notice]="Avaliador #{@avaliador.nome} foi inserido está ativo."
+            if @avaliador.sexo == 'Masculino'
+                flash[:notice]="Avaliador #{@avaliador.nome} foi cadastrado com sucesso."
+            elsif @avaliador.sexo == 'Feminino'
+                flash[:notice]="Avaliadora #{@avaliador.nome} foi cadastrada com sucesso."
+            end
             redirect_to total_avaliadores_path
         else
-                render :template=> "avaliadores/new"
+            render :template=> "avaliadores/new"
         end
     end
 
@@ -82,8 +86,7 @@ class AvaliadoresController < ApplicationController
     
 
     #Estes Métodos abaixo são responsaveis por realizar
-    #a avaliação das atividades.
-    #/atividades/1/edit
+    #a avaliação das atividades. /atividades/1/edit
 #    def avaliar_atividade
 #       @atividade_aluno = Atividade.find(params[:id])
 #    end
